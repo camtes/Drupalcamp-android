@@ -1,8 +1,12 @@
 package ccamposfuentes.es.drupalcamp;
 
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,15 +30,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        getSupportActionBar().setElevation(0);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +40,28 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        NestedScrollView scrollView = (NestedScrollView) findViewById (R.id.nestedScroll);
+        scrollView.setFillViewport (true);
+
+        // Get the ViewPager and set it's PagerAdapter so that it can display items
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),
+                MainActivity.this));
+
+        // Give the TabLayout the ViewPager
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+//        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+
+        //TabLayout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
+        tabLayout.setTabMode(TabLayout.MODE_FIXED);
+        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.addTab(tabLayout.newTab().setText("Sala 1"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Sala 2"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Sala 3"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Sala 4"));
     }
 
     @Override
@@ -90,7 +112,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_contact) {
 
         }
 
