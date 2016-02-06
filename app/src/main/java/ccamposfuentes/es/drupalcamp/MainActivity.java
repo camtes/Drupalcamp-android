@@ -1,5 +1,6 @@
 package ccamposfuentes.es.drupalcamp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
+import ccamposfuentes.es.drupalcamp.objets.Speaker;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,19 +51,10 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),
                 MainActivity.this));
 
-        // Give the TabLayout the ViewPager
-//        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-//        tabLayout.setupWithViewPager(viewPager);
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
-
         //TabLayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
-//        tabLayout.addTab(tabLayout.newTab().setText("Sala 1"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Sala 2"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Sala 3"));
-//        tabLayout.addTab(tabLayout.newTab().setText("Sala 4"));
     }
 
     @Override
@@ -103,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            startActivity(new Intent(this, SpeakerActivity.class));
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
