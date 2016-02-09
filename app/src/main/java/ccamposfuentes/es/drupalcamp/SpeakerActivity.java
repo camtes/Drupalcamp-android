@@ -21,9 +21,9 @@ public class SpeakerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speaker);
 
-        if (getSupportActionBar() != null)
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        }
         speakers = new ArrayList<>();
         speakers.add(new Speaker("Carlos Campos", "SI2 Soluciones", "@ccamposf",
                 "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAATSAAAAJGE1ZDUxYjlkLWFkMTEtNGYzZS1iNDQ4LTIzMWExNTIxZjUxNA.jpg"));

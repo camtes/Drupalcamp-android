@@ -1,5 +1,10 @@
 package ccamposfuentes.es.drupalcamp.objets;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Date;
+
 /**
  * Author: Carlos Campos
  * Email: carlos@ccamposfuentes.es
@@ -7,12 +12,31 @@ package ccamposfuentes.es.drupalcamp.objets;
  * Project: DrupalCamp
  */
 
+@DatabaseTable
 public class Speaker {
 
-    String name;
-    String company;
-    String twitter;
-    String image;
+    public static final String ID = "_id";
+    public static final String NAME = "name";
+    public static final String COMPANY = "company";
+    public static final String TWITTER = "twitter";
+    public static final String IMAGE = "image";
+
+    @DatabaseField(generatedId = true, columnName = ID)
+    private int id;
+
+    @DatabaseField(columnName = NAME)
+    private String name;
+
+    @DatabaseField(columnName = COMPANY)
+    private String company;
+
+    @DatabaseField(columnName = TWITTER)
+    private String twitter;
+
+    @DatabaseField(columnName = IMAGE)
+    private String image;
+
+    public Speaker() {}
 
     public Speaker(String name, String company, String twitter, String image) {
         this.name = name;
@@ -25,6 +49,10 @@ public class Speaker {
         this.name = name;
         this.company = company;
         this.twitter = twitter;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

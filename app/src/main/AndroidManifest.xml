@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SpeakerActivity">
+        <activity android:name=".SpeakerActivity"
+            android:label="@string/Speaker">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ccamposfuentes.es.drupalcamp.MainActivity" />
