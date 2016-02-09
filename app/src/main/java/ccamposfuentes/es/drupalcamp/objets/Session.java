@@ -16,7 +16,7 @@ import java.util.Date;
 public class Session {
 
     public static final String ID = "_id";
-    public static final String TITLE = "title";
+    public static final String NAME = "name";
     public static final String DATE = "date";
     public static final String ROOM = "room";
     public static final String SPEAKER = "speaker";
@@ -24,24 +24,24 @@ public class Session {
     @DatabaseField(generatedId = true, columnName = ID)
     private int id;
 
-    @DatabaseField(columnName = TITLE)
-    private String title;
+    @DatabaseField(columnName = NAME)
+    private String name;
 
     @DatabaseField(columnName = DATE)
-    private Date fechaNacimiento;
+    private String date;
 
     @DatabaseField(columnName = ROOM)
     private int room;
 
-    @DatabaseField(columnName = SPEAKER)
-    private String speaker;
+    @DatabaseField(foreign=true, columnName = SPEAKER)
+    private Speaker speaker;
 
 
     public Session() {}
 
-    public Session(String title, Date fechaNacimiento, int room, String speaker) {
-        this.title = title;
-        this.fechaNacimiento = fechaNacimiento;
+    public Session(String name, String date, int room, Speaker speaker) {
+        this.name = name;
+        this.date = date;
         this.room = room;
         this.speaker = speaker;
     }
@@ -54,20 +54,20 @@ public class Session {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public String getDate() {
+        return date;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setDate(String fechaNacimiento) {
+        this.date = fechaNacimiento;
     }
 
     public int getRoom() {
@@ -78,11 +78,11 @@ public class Session {
         this.room = room;
     }
 
-    public String getSpeaker() {
+    public Speaker getSpeaker() {
         return speaker;
     }
 
-    public void setSpeaker(String speaker) {
+    public void setSpeaker(Speaker speaker) {
         this.speaker = speaker;
     }
 }

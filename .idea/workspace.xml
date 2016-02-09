@@ -27,21 +27,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6d95e81-b1e4-47c0-986c-3129ca565c26" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ormlite_android_4_48.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ormlite_core_4_48.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/database/DBHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_days_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/SpeakerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/SpeakerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Speaker.java" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Speaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java" afterPath="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java" />
     </list>
     <ignored path="DrupalCamp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,8 +75,11 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-              <folding />
+              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+              <folding>
+                <element signature="e#2428#2459#0" expanded="true" />
+                <element signature="e#2461#2493#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,13 +109,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DBHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/database/DBHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5443925">
-              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#872#873#0" expanded="true" />
                 <element signature="e#941#942#0" expanded="true" />
               </folding>
@@ -131,33 +122,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Session.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Session.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="27" selection-start-line="17" selection-start-column="4" selection-end-line="36" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.5466035">
+              <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1166#1167#0" expanded="true" />
-                <element signature="e#1191#1192#0" expanded="true" />
-                <element signature="e#1224#1225#0" expanded="true" />
+                <element signature="e#1135#1136#0" expanded="true" />
+                <element signature="e#1160#1161#0" expanded="true" />
+                <element signature="e#1193#1194#0" expanded="true" />
+                <element signature="e#1221#1222#0" expanded="true" />
                 <element signature="e#1252#1253#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
-                <element signature="e#1312#1313#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-                <element signature="e#1388#1389#0" expanded="true" />
-                <element signature="e#1428#1429#0" expanded="true" />
-                <element signature="e#1466#1467#0" expanded="true" />
-                <element signature="e#1526#1527#0" expanded="true" />
-                <element signature="e#1580#1581#0" expanded="true" />
-                <element signature="e#1608#1609#0" expanded="true" />
-                <element signature="e#1635#1636#0" expanded="true" />
-                <element signature="e#1672#1673#0" expanded="true" />
-                <element signature="e#1704#1705#0" expanded="true" />
-                <element signature="e#1738#1739#0" expanded="true" />
-                <element signature="e#1768#1769#0" expanded="true" />
-                <element signature="e#1814#1815#0" expanded="true" />
-                <element signature="e#1852#1853#0" expanded="true" />
+                <element signature="e#1279#1280#0" expanded="true" />
+                <element signature="e#1319#1320#0" expanded="true" />
+                <element signature="e#1351#1352#0" expanded="true" />
+                <element signature="e#1382#1383#0" expanded="true" />
+                <element signature="e#1409#1410#0" expanded="true" />
+                <element signature="e#1460#1461#0" expanded="true" />
+                <element signature="e#1503#1504#0" expanded="true" />
+                <element signature="e#1531#1532#0" expanded="true" />
+                <element signature="e#1558#1559#0" expanded="true" />
+                <element signature="e#1595#1596#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#1662#1663#0" expanded="true" />
+                <element signature="e#1692#1693#0" expanded="true" />
+                <element signature="e#1739#1740#0" expanded="true" />
+                <element signature="e#1777#1778#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2213,12 +2204,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/SpeakerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/activity_main_drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main_days_activity.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Speaker.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/database/DBHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java" />
       </list>
     </option>
   </component>
@@ -2306,28 +2297,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="drupalcamp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DrupalCamp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drupalcamp" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2640,12 +2609,18 @@
       <option name="project" value="LOCAL" />
       <updated>1454797312364</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ormlite implementation, tables and db helper">
+      <created>1455057035568</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1455057035568</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="23" width="1647" height="1000" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2653,7 +2628,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25226244" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25226244" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24949084" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39932126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2691,7 +2666,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Design" />
     <MESSAGE value="Speaker activity, layout and adapter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Speaker activity, layout and adapter" />
+    <MESSAGE value="ormlite implementation, tables and db helper" />
+    <option name="LAST_COMMIT_MESSAGE" value="ormlite implementation, tables and db helper" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2701,8 +2677,20 @@
           <line>65</line>
           <properties />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java</url>
+          <line>182</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java</url>
+          <line>81</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2722,7 +2710,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2747,7 +2738,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2771,7 +2765,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2839,7 +2836,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2863,7 +2863,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2887,7 +2890,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2895,7 +2901,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3119,14 +3128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="39" selection-start-line="83" selection-start-column="39" selection-end-line="83" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_days_activity.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -3146,36 +3147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="27" selection-start-line="17" selection-start-column="4" selection-end-line="36" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1166#1167#0" expanded="true" />
-            <element signature="e#1191#1192#0" expanded="true" />
-            <element signature="e#1224#1225#0" expanded="true" />
-            <element signature="e#1252#1253#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
-            <element signature="e#1312#1313#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-            <element signature="e#1428#1429#0" expanded="true" />
-            <element signature="e#1466#1467#0" expanded="true" />
-            <element signature="e#1526#1527#0" expanded="true" />
-            <element signature="e#1580#1581#0" expanded="true" />
-            <element signature="e#1608#1609#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#1672#1673#0" expanded="true" />
-            <element signature="e#1704#1705#0" expanded="true" />
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#1768#1769#0" expanded="true" />
-            <element signature="e#1814#1815#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Speaker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3188,12 +3159,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/database/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5443925">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#872#873#0" expanded="true" />
             <element signature="e#941#942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding>
+            <element signature="e#2428#2459#0" expanded="true" />
+            <element signature="e#2461#2493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ccamposfuentes/es/drupalcamp/objets/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5466035">
+          <caret line="60" column="23" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1135#1136#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+            <element signature="e#1252#1253#0" expanded="true" />
+            <element signature="e#1279#1280#0" expanded="true" />
+            <element signature="e#1319#1320#0" expanded="true" />
+            <element signature="e#1351#1352#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+            <element signature="e#1460#1461#0" expanded="true" />
+            <element signature="e#1503#1504#0" expanded="true" />
+            <element signature="e#1531#1532#0" expanded="true" />
+            <element signature="e#1558#1559#0" expanded="true" />
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1692#1693#0" expanded="true" />
+            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1777#1778#0" expanded="true" />
           </folding>
         </state>
       </provider>
