@@ -22,6 +22,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity
 
     DBHelper mDBHelper;
     private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], 'sessions':[{'name':'session1','date':'23/04/2016 10:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 12:00:00', 'room':3,'speaker':'@speaker2'} ]}";
+
+    private RelativeLayout rl_friday, rl_saturday, rl_sunday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (!sharedPreferences.getBoolean("database", false)) {
             editor.putBoolean("database", true);
+            editor.apply();
 
             saveDatabase();
         }
@@ -127,15 +132,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_diary) {
+        if (id == R.id.nav_today) {
 
         } else if (id == R.id.nav_speakers) {
             startActivity(new Intent(this, SpeakerActivity.class));
         } else if (id == R.id.nav_fav) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_contact) {
 
         }
 

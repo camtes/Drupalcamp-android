@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="146dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_calendar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
+                android:text="Building mentoring into an open source
+community that welcomes and values new contributors"
+                />
+
+            <TextView
+                android:id="@+id/tv_calendar_speaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_calendar_title"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"
+                android:text="Carlos Campos"/>
+
+            <TextView
+                android:id="@+id/tv_calendar_speaker_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_calendar_speaker"
+                android:fontFamily="sans-serif-light"
+                android:text="\@ccamposf"/>
+
+            <TextView
+                android:id="@+id/tv_calendar_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="32sp"
+                android:alpha="0.7"
+                android:fontFamily="sans-serif-light"
+                android:text="10:00"
+                android:layout_alignBottom="@+id/tv_calendar_speaker_twitter" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

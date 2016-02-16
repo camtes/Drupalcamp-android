@@ -5,16 +5,25 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import ccamposfuentes.es.drupalcamp.adapters.SpeakerAdapter;
+import ccamposfuentes.es.drupalcamp.database.DBHelper;
+import ccamposfuentes.es.drupalcamp.objets.Session;
 import ccamposfuentes.es.drupalcamp.objets.Speaker;
 
 public class SpeakerActivity extends AppCompatActivity {
 
-    List<Speaker> speakers;
+    List<Speaker> speakers_;
+    DBHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +33,25 @@ public class SpeakerActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        speakers = new ArrayList<>();
-        speakers.add(new Speaker("Carlos Campos", "SI2 Soluciones", "@ccamposf",
-                "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAATSAAAAJGE1ZDUxYjlkLWFkMTEtNGYzZS1iNDQ4LTIzMWExNTIxZjUxNA.jpg"));
+//        speakers.add(new Speaker("Carlos Campos", "SI2 Soluciones", "@ccamposf",
+//                "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAATSAAAAJGE1ZDUxYjlkLWFkMTEtNGYzZS1iNDQ4LTIzMWExNTIxZjUxNA.jpg"));
 
-        for (int i=0; i<3; i++) {
-            speakers.add(new Speaker("Ponente "+i, "Empresa "+i, "twitter"));
+        // Connect to database
+        mDBHelper = OpenHelperManager.getHelper(this, DBHelper.class);
+
+        Dao dao;
+        try {
+            dao = mDBHelper.getSpeakerDao();
+            List speakers = dao.queryForAll();
+            if (speakers.isEmpty()) {
+                Log.d("SpeakerActivity", "No se encontraron usuarios con nombre = Fede");
+            } else {
+                Log.d("SpeakerActivity", "Recuperado usuarios con nombre = Fede " + speakers);
+            }
+
+            speakers_ = speakers;
+        } catch (SQLException e) {
+            Log.e("SpeakerActivity", "Error buscando usuario");
         }
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_speakers);
@@ -38,8 +60,18 @@ public class SpeakerActivity extends AppCompatActivity {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        SpeakerAdapter mAdapter = new SpeakerAdapter(speakers, this);
+        SpeakerAdapter mAdapter = new SpeakerAdapter(speakers_, this);
         mRecyclerView.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDBHelper != null) {
+            OpenHelperManager.releaseHelper();
+            mDBHelper = null;
+        }
     }
 }

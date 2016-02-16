@@ -3,31 +3,43 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_diary"
+            android:id="@+id/nav_today"
             android:icon="@drawable/ic_event_black_24dp"
             android:checked="true"
-            android:title="Agenda" />
+            android:title="@string/today" />
         <item
             android:id="@+id/nav_speakers"
             android:icon="@drawable/ic_people_black_24dp"
-            android:title="Ponentes" />
+            android:title="@string/speakers" />
         <item
             android:id="@+id/nav_fav"
             android:icon="@drawable/ic_favorite_black_24dp"
-            android:title="Favorito" />
+            android:title="@string/favorites" />
     </group>
 
-    <item android:title="Comunicación">
+    <item android:title="@string/calendar">
+        <menu>
+            <item
+                android:id="@+id/nav_calendar_friday"
+                android:icon="@drawable/ic_event_black_24dp"
+                android:title="@string/nav_friday" />
+            <item
+                android:id="@+id/nav_calendar_saturday"
+                android:icon="@drawable/ic_event_black_24dp"
+                android:title="@string/nav_saturday" />
+            <item
+                android:id="@+id/nav_calendar_sunday"
+                android:icon="@drawable/ic_event_black_24dp"
+                android:title="@string/nav_sunday" />
+        </menu>
+    </item>
+
+    <item android:title="@string/comunications">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Compartir" />
-
-            <item
-                android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_email_black_24dp"
-                android:title="Contacta con nosotros" />
+                android:title="@string/share" />
         </menu>
     </item>
 

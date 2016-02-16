@@ -31,6 +31,23 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Fragment fragment;
+        //ToDo: Crear un fragment, y pasar sala.
+        switch (position) {
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
+
         return PageFragment.newInstance(position + 1);
     }
 
