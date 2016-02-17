@@ -2,10 +2,23 @@ package ccamposfuentes.es.drupalcamp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import ccamposfuentes.es.drupalcamp.adapters.SessionAdapter;
+import ccamposfuentes.es.drupalcamp.database.DBHelper;
+import ccamposfuentes.es.drupalcamp.objets.Session;
 
 /**
  * Author: Carlos Campos
@@ -18,6 +31,7 @@ public class PageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
+    private List<Session> itemsSessions;
 
     public static PageFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -37,8 +51,36 @@ public class PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room, container, false);
-        TextView textView = (TextView) view;
-        textView.setText("Fragment #" + mPage);
+
+        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_sessions_room);
+
+        mRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+
+        // Connect to database
+        DBHelper mDBHelper = OpenHelperManager.getHelper(getContext(), DBHelper.class);
+
+        Dao dao;
+        try {
+            dao = mDBHelper.getSessionDao();
+            List sessions = dao.queryForAll();
+
+            itemsSessions = sessions;
+        } catch (SQLException e) {
+            Log.e("PageFragment", e.toString());
+        }
+
+        if (mDBHelper != null) {
+            OpenHelperManager.releaseHelper();
+            mDBHelper = null;
+        }
+
+        // Adaptador
+        SessionAdapter mAdapter = new SessionAdapter(getContext(), itemsSessions);
+        mRecyclerView.setAdapter(mAdapter);
+
         return view;
     }
 }

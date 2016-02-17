@@ -3,6 +3,8 @@ package ccamposfuentes.es.drupalcamp.objets;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -84,5 +86,21 @@ public class Session {
 
     public void setSpeaker(Speaker speaker) {
         this.speaker = speaker;
+    }
+
+    public String getHour() {
+        String hour = null;
+        Date newDate;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat formatHour = new SimpleDateFormat("hh:mm");
+
+        try {
+            newDate = formatter.parse(date);
+            hour = formatHour.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return hour;
     }
 }

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DBHelper mDBHelper;
-    private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], 'sessions':[{'name':'session1','date':'23/04/2016 10:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 12:00:00', 'room':3,'speaker':'@speaker2'} ]}";
+    private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], 'sessions':[{'name':'session1','date':'23/04/2016 10:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 11:00:00', 'room':3,'speaker':'@speaker2'}, {'name':'session1','date':'23/04/2016 12:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 13:00:00', 'room':3,'speaker':'@speaker2'}, {'name':'session1','date':'23/04/2016 16:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 17:00:00', 'room':3,'speaker':'@speaker2'} ]}";
 
     private RelativeLayout rl_friday, rl_saturday, rl_sunday;
 
@@ -91,7 +91,6 @@ public class MainActivity extends AppCompatActivity
 
             saveDatabase();
         }
-
     }
 
     @Override
@@ -173,11 +172,11 @@ public class MainActivity extends AppCompatActivity
                             obj.getString(Speaker.TWITTER));
                     dao.create(speaker);
                 } catch (SQLException e) {
-                    Log.e("MainActivity", "Error creando el ponente");
+                    Log.e("MainActivity", e.toString());
                 }
             }
 
-            for (int i=0; i<jsonSpeakers.length(); i++) {
+            for (int i=0; i<jsonSessions.length(); i++) {
                 Dao dao;
                 Dao daoSpeaker;
                 JSONObject obj = jsonSessions.getJSONObject(i);

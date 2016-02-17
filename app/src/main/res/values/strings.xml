@@ -11,11 +11,9 @@
     <string name="favorites">Favorites</string>
     <string name="comunications">Comunications</string>
     <string name="share">Share</string>
-    <string name="calendar">Calendar</string>
+    <string name="calendar">Schedule</string>
     <string name="nav_friday">Friday</string>
     <string name="nav_saturday">Saturday</string>
     <string name="nav_sunday">Sunday</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
