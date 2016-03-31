@@ -46,7 +46,111 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DBHelper mDBHelper;
-    private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], 'sessions':[{'name':'session1','date':'23/04/2016 10:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 11:00:00', 'room':3,'speaker':'@speaker2'}, {'name':'session1','date':'23/04/2016 12:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 13:00:00', 'room':3,'speaker':'@speaker2'}, {'name':'session1','date':'23/04/2016 16:00:00', 'room':1,'speaker':'@speaker1'}, {'name':'session2','date':'24/04/2016 17:00:00', 'room':3,'speaker':'@speaker2'} ]}";
+    private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], \"sessions\": [{\n" +
+            "      \"name\":\"Bienvenidos a esta nuestra comunidad\",\n" +
+            "      \"date\":\"23/04/2016 9:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"pdelgado, nesimo, jparra, ignacioflores, jansete\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Arquitectura de la información & Drupal 8\",\n" +
+            "      \"date\":\"23/04/2016 10:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"vlledo\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Cómo sacarle partido a tu página con el Marketing de contenidos\",\n" +
+            "      \"date\":\"23/04/2016 12:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"Claudia\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Seguridad para todos\",\n" +
+            "      \"date\":\"23/04/2016 13:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"rabbitlair\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Almuerzo\",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Proximamente\",\n" +
+            "      \"date\":\"23/04/2016 15:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Talk is cheap\",\n" +
+            "      \"date\":\"23/04/2016 16:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"NITEMAN\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Asamblea\",\n" +
+            "      \"date\":\"23/04/2016 17:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Proximamente\",\n" +
+            "      \"date\":\"24/04/2016 9:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Design Sprint: a toolkit for product innovation\",\n" +
+            "      \"date\":\"24/04/2016 10:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"manu\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Conseguir y entregar grandes proyctos desde la perspectiva de una pequeña empresa\",\n" +
+            "      \"date\":\"24/04/2016 12:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"rvillar\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Proximamente\",\n" +
+            "      \"date\":\"24/04/2016 10:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Sesión de cierre\",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":1,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    } ]}";
 
     private RelativeLayout rl_friday, rl_saturday, rl_sunday;
 
@@ -186,7 +290,7 @@ public class MainActivity extends AppCompatActivity
                     List<Speaker> speaker = daoSpeaker.queryForEq(Speaker.TWITTER, obj.get(Session.SPEAKER));
                     dao = mDBHelper.getSessionDao();
                     Session session = new Session(obj.getString(Session.NAME), obj.getString(Session.DATE),
-                            obj.getInt(Session.ROOM), speaker.get(0));
+                            obj.getInt(Session.ROOM), obj.getString(Session.SPEAKER), obj.getInt(Session.TYPE));
                     dao.create(session);
                 } catch (SQLException e) {
                     Log.e("MainActivity", "Error creando la sesión");

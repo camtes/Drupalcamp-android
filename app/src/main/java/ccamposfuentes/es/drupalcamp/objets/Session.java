@@ -22,6 +22,7 @@ public class Session {
     public static final String DATE = "date";
     public static final String ROOM = "room";
     public static final String SPEAKER = "speaker";
+    public static final String TYPE = "type";
 
     @DatabaseField(generatedId = true, columnName = ID)
     private int id;
@@ -35,17 +36,21 @@ public class Session {
     @DatabaseField(columnName = ROOM)
     private int room;
 
-    @DatabaseField(foreign=true, columnName = SPEAKER)
-    private Speaker speaker;
+    @DatabaseField(columnName = SPEAKER)
+    private String speaker;
+
+    @DatabaseField(columnName = TYPE)
+    private int type;
 
 
     public Session() {}
 
-    public Session(String name, String date, int room, Speaker speaker) {
+    public Session(String name, String date, int room, String speaker, int type) {
         this.name = name;
         this.date = date;
         this.room = room;
         this.speaker = speaker;
+        this.type = type;
     }
 
     public int getId() {
@@ -80,19 +85,27 @@ public class Session {
         this.room = room;
     }
 
-    public Speaker getSpeaker() {
+    public String getSpeaker() {
         return speaker;
     }
 
-    public void setSpeaker(Speaker speaker) {
+    public void setSpeaker(String speaker) {
         this.speaker = speaker;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getHour() {
         String hour = null;
         Date newDate;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        SimpleDateFormat formatHour = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatHour = new SimpleDateFormat("HH:mm");
 
         try {
             newDate = formatter.parse(date);

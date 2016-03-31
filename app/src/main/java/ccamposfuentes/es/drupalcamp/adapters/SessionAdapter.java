@@ -39,7 +39,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title, speaker, speakerTwitter, hour;
+        public TextView title, speaker, hour;
         public CardView card;
 
         ViewHolder(View v) {
@@ -48,14 +48,28 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             card = (CardView) v.findViewById(R.id.cv_schedule);
             title = (TextView) v.findViewById(R.id.tv_schedule_title);
             speaker = (TextView) v.findViewById(R.id.tv_schedule_speaker);
-            speakerTwitter = (TextView) v.findViewById(R.id.tv_schedule_speaker_twitter);
             hour = (TextView) v.findViewById(R.id.tv_schedule_hour);
         }
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return itemsSessions.get(position).getType();
+    }
+
+    @Override
     public SessionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_room_item, null);
+        View v = null;
+
+        switch (viewType) {
+            case 0:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_room_item, null);
+                break;
+            case 1:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_room_item_special, null);
+                break;
+        }
+
 
         ViewHolder svh = new ViewHolder(v);
 
@@ -65,25 +79,16 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        Speaker speaker = null;
-
-        // Connect to database
-        DBHelper mDBHelper = OpenHelperManager.getHelper(context, DBHelper.class);
-
-        Dao dao;
-        try {
-            dao = mDBHelper.getSpeakerDao();
-            speaker = (Speaker) dao.queryForId(itemsSessions.get(position).getSpeaker().getId());
-            Log.e("speaker", speaker.getName());
-
-        } catch (SQLException e) {
-            Log.e("SpeakerActivity", e.toString());
+        switch (itemsSessions.get(position).getType()) {
+            case 0:
+                holder.title.setText(itemsSessions.get(position).getName());
+                holder.speaker.setText(itemsSessions.get(position).getSpeaker());
+                holder.hour.setText(itemsSessions.get(position).getHour());
+                break;
+            case 1:
+                holder.title.setText(itemsSessions.get(position).getName());
         }
 
-        holder.title.setText(itemsSessions.get(position).getName());
-        holder.speaker.setText(speaker.getName());
-        holder.speakerTwitter.setText(speaker.getTwitter());
-        holder.hour.setText(itemsSessions.get(position).getHour());
     }
 
     @Override

@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-light"
                 android:text="Building mentoring into an open source
@@ -30,20 +30,15 @@ community that welcomes and values new contributors"
                 android:id="@+id/tv_schedule_speaker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_schedule_title"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"
                 android:textSize="16sp"
-                android:fontFamily="sans-serif-light"
-                android:text="Carlos Campos"/>
-
-            <TextView
-                android:id="@+id/tv_schedule_speaker_twitter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_schedule_speaker"
-                android:fontFamily="sans-serif-light"
-                android:text="\@ccamposf"/>
+                android:fontFamily="sans-serif"
+                android:text="Carlos Campos"
+                android:layout_toLeftOf="@+id/tv_schedule_hour"
+                android:layout_alignTop="@+id/tv_schedule_hour"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true" />
 
             <TextView
                 android:id="@+id/tv_schedule_hour"
@@ -55,8 +50,7 @@ community that welcomes and values new contributors"
                 android:alpha="0.7"
                 android:fontFamily="sans-serif-light"
                 android:text="10:00"
-                android:layout_below="@+id/tv_schedule_title"
-                android:layout_alignBottom="@+id/tv_schedule_speaker_twitter" />
+                android:layout_below="@+id/tv_schedule_title" />
 
         </RelativeLayout>
 
