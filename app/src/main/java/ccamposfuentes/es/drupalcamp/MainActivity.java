@@ -46,7 +46,21 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DBHelper mDBHelper;
-    private static final String json = "{'speakers':[{'name':'speaker1','company':'company1','twitter':'@speaker1'}, {'name':'speaker2','company':'company2','twitter':'@speaker2'}], \"sessions\": [{\n" +
+    private static final String json = "{\n" +
+            "  \"speakers\": [\n" +
+            "    {\n" +
+            "      \"name\":\"speaker1\",\n" +
+            "      \"company\":\"company1\",\n" +
+            "      \"twitter\":\"@speaker1\"\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"speaker2\",\n" +
+            "      \"company\":\"company2\",\n" +
+            "      \"twitter\":\"@speaker2\"\n" +
+            "    }\n" +
+            "  ],\n" +
+            "  \"sessions\": [\n" +
+            "    {\n" +
             "      \"name\":\"Bienvenidos a esta nuestra comunidad\",\n" +
             "      \"date\":\"23/04/2016 9:30:00\",\n" +
             "      \"room\":1,\n" +
@@ -145,12 +159,329 @@ public class MainActivity extends AppCompatActivity
             "      \"type\":0\n" +
             "    },\n" +
             "    {\n" +
-            "      \"name\":\"Sesión de cierre\",\n" +
+            "      \"name\":\"Sesión de cierre  \",\n" +
             "      \"date\":\"23/04/2016 14:00:00\",\n" +
             "      \"room\":1,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
-            "    } ]}";
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Nuestro amigo Flexbox\",\n" +
+            "      \"date\":\"23/04/2016 9:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"pakmanlh\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Bajarse al behat: haz que tu aplicación se comporte\",\n" +
+            "      \"date\":\"23/04/2016 10:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"rodrigoaguilera\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Sácale el jugo a los display modes\",\n" +
+            "      \"date\":\"23/04/2016 12:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"jbellido\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"¡TWIG desde 0!\",\n" +
+            "      \"date\":\"23/04/2016 13:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"miguel_kode, Jorgillo\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Almuerzo\",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Docker & Drupal: Una imágen vale más que mil palabras\",\n" +
+            "      \"date\":\"23/04/2016 15:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"codigoweb, ignacioflores\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Mejorando la experiencia de los editores de contenidos con Paragraphs\",\n" +
+            "      \"date\":\"23/04/2016 16:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"david.gil\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Asamblea\",\n" +
+            "      \"date\":\"23/04/2016 17:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Activando tu AMP versión. Qué necesitas saber\",\n" +
+            "      \"date\":\"24/04/2016 9:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"jansete, mgzrobles\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Una aplicación real de Drupal 8 como servidor RESTful / Backoffice para apps\",\n" +
+            "      \"date\":\"24/04/2016 10:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"ccamposfuentes, capynet\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Varnish para meros mortales\",\n" +
+            "      \"date\":\"24/04/2016 12:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"mgzrobles\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Hoy estoy muy Ansible\",\n" +
+            "      \"date\":\"24/04/2016 10:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"isholgueras\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Sesión de cierre  \",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":2,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Using Scrum Agile in remote development\",\n" +
+            "      \"date\":\"23/04/2016 9:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"myram\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Geospatail Data, 3d Infrastructure and IoT\",\n" +
+            "      \"date\":\"23/04/2016 10:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"040lab\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"GraphQL meets Drupal\",\n" +
+            "      \"date\":\"23/04/2016 12:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"fubhy\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"How to contribute in your day to day work\",\n" +
+            "      \"date\":\"23/04/2016 13:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"mon_franco\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Almuerzo\",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Get yourself heard in Open Source\",\n" +
+            "      \"date\":\"23/04/2016 15:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"emma.maria\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Markup the Drupal 8 way\",\n" +
+            "      \"date\":\"23/04/2016 16:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"lauriii\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Asamblea\",\n" +
+            "      \"date\":\"23/04/2016 17:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"The next generation embedding with Entity embed\",\n" +
+            "      \"date\":\"24/04/2016 9:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"slashrsm\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Designing for Success: Content-first Design\",\n" +
+            "      \"date\":\"24/04/2016 10:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"skourak\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Improving the Responsive Web Design Process in 2016\",\n" +
+            "      \"date\":\"24/04/2016 12:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"ckrina\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Style guides in Drupal development workflows\",\n" +
+            "      \"date\":\"24/04/2016 10:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"kalinchernev\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Sesión de cierre  \",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":3,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"REST in Drupal 8\",\n" +
+            "      \"date\":\"23/04/2016 9:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"dawehner\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"The future of REST in Drupal\",\n" +
+            "      \"date\":\"23/04/2016 10:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"e0ipso\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Migrating data to Drupal 8\",\n" +
+            "      \"date\":\"23/04/2016 12:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"isholgueras\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Making your entities and fields translatable with Drupal 8\",\n" +
+            "      \"date\":\"23/04/2016 13:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"penyaskito\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Almuerzo\",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"The Drupal 8 plugin system: extensibility for all\",\n" +
+            "      \"date\":\"23/04/2016 15:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"Xano\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"EventDispatcher: the natural successor of hooks\",\n" +
+            "      \"date\":\"23/04/2016 16:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"joelrguezaleman\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Asamblea\",\n" +
+            "      \"date\":\"23/04/2016 17:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Ruling Drupal 8 with #d8rules\",\n" +
+            "      \"date\":\"24/04/2016 9:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"dasjo\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Building the fastest Drupal in the Galaxy\",\n" +
+            "      \"date\":\"24/04/2016 10:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"e0ipso, NITEMAN\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Desayuno\",\n" +
+            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Debugging in Drupal 8\",\n" +
+            "      \"date\":\"24/04/2016 12:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"juampynr\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Unit testint in Drupal\",\n" +
+            "      \"date\":\"24/04/2016 10:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"e0ipso, penyaskito\",\n" +
+            "      \"type\":0\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"name\":\"Sesión de cierre  \",\n" +
+            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"room\":4,\n" +
+            "      \"speaker\":\"\",\n" +
+            "      \"type\":1\n" +
+            "    },\n" +
+            "  ]\n" +
+            "}\n";
 
     private RelativeLayout rl_friday, rl_saturday, rl_sunday;
 
@@ -282,12 +613,9 @@ public class MainActivity extends AppCompatActivity
 
             for (int i=0; i<jsonSessions.length(); i++) {
                 Dao dao;
-                Dao daoSpeaker;
                 JSONObject obj = jsonSessions.getJSONObject(i);
 
                 try {
-                    daoSpeaker = mDBHelper.getSpeakerDao();
-                    List<Speaker> speaker = daoSpeaker.queryForEq(Speaker.TWITTER, obj.get(Session.SPEAKER));
                     dao = mDBHelper.getSessionDao();
                     Session session = new Session(obj.getString(Session.NAME), obj.getString(Session.DATE),
                             obj.getInt(Session.ROOM), obj.getString(Session.SPEAKER), obj.getInt(Session.TYPE));

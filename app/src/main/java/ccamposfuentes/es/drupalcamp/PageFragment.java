@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -52,6 +53,8 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room, container, false);
 
+        Toast.makeText(getContext(), mPage+"", Toast.LENGTH_SHORT).show();
+
         RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_sessions_room);
 
         mRecyclerView.setHasFixedSize(true);
@@ -65,7 +68,7 @@ public class PageFragment extends Fragment {
         Dao dao;
         try {
             dao = mDBHelper.getSessionDao();
-            List sessions = dao.queryForAll();
+            List sessions = dao.queryForEq(Session.ROOM, mPage);
 
             itemsSessions = sessions;
         } catch (SQLException e) {
