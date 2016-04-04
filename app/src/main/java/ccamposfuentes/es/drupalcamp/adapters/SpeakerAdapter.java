@@ -1,6 +1,8 @@
 package ccamposfuentes.es.drupalcamp.adapters;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ import ccamposfuentes.es.drupalcamp.objets.Speaker;
 public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerViewHolder> {
     List<Speaker> speakers = new ArrayList<>();
     Context context;
+    static final String URL_SERVER = "http://drupalcamp.es/";
 
     public SpeakerAdapter(List<Speaker> speakers, Context context) {
         this.speakers = speakers;
@@ -60,18 +63,20 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
         return svh;
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final SpeakerViewHolder holder, final int position) {
 
-        holder.name.setText(speakers.get(position).getName());
+        holder.name.setText(speakers.get(position).getUsername());
         holder.company.setText(speakers.get(position).getCompany());
         holder.twitter.setText(speakers.get(position).getTwitter());
         if (speakers.get(position).getImage() != null) {
-            Picasso.with(context).load(speakers.get(position).getImage()).into(holder.image);
+            Picasso.with(context).load(URL_SERVER+speakers.get(position).getImage()).into(holder.image);
             holder.image.setPadding(0,0,0,0);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                holder.image.setImageTintList(null);
-            }
+            holder.image.setBackgroundColor(context.getColor(android.R.color.transparent));
+        }
+        else {
+            holder.image.getDrawable().setTint(context.getColor(android.R.color.white));
         }
     }
 

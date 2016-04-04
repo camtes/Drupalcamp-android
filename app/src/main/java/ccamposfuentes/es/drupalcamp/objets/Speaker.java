@@ -1,9 +1,11 @@
 package ccamposfuentes.es.drupalcamp.objets;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Author: Carlos Campos
@@ -16,16 +18,17 @@ import java.util.Date;
 public class Speaker {
 
     public static final String ID = "_id";
-    public static final String NAME = "name";
+    public static final String USERNAME = "username";
     public static final String COMPANY = "company";
     public static final String TWITTER = "twitter";
     public static final String IMAGE = "image";
+    public static final String SESSIONS = "session";
 
     @DatabaseField(generatedId = true, columnName = ID)
     private int id;
 
-    @DatabaseField(columnName = NAME)
-    private String name;
+    @DatabaseField(columnName = USERNAME)
+    private String username;
 
     @DatabaseField(columnName = COMPANY)
     private String company;
@@ -36,17 +39,21 @@ public class Speaker {
     @DatabaseField(columnName = IMAGE)
     private String image;
 
+    @DatabaseField(columnName = SESSIONS, dataType = DataType.SERIALIZABLE)
+    private String[] session;
+
     public Speaker() {}
 
-    public Speaker(String name, String company, String twitter, String image) {
-        this.name = name;
+    public Speaker(String name, String company, String twitter, String image, String[] session) {
+        this.username = name;
         this.company = company;
         this.twitter = twitter;
         this.image = image;
+        this.session = session;
     }
 
-    public Speaker(String name, String company, String twitter) {
-        this.name = name;
+    public Speaker(String username, String company, String twitter, String[] session) {
+        this.username = username;
         this.company = company;
         this.twitter = twitter;
     }
@@ -55,12 +62,12 @@ public class Speaker {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getCompany() {
@@ -85,5 +92,17 @@ public class Speaker {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String[] getSession() {
+        return session;
+    }
+
+    public void setSession(String[] session) {
+        this.session = session;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -61,7 +61,6 @@ public class PageFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-
         // Connect to database
         DBHelper mDBHelper = OpenHelperManager.getHelper(getContext(), DBHelper.class);
 

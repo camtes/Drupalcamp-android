@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ccamposfuentes.es.drupalcamp.SessionDetail">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Una aplicación real de Drupal 8 como servidor RESTful / Backoffice para apps"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:padding="16dp"
+        android:background="@color/colorAccent"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/speaker_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ponentes"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_sessions_detail_speakers"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/speaker_label" />
+
+    <TextView
+        android:id="@+id/session_detail_sumary_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resumen"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_below="@+id/rv_sessions_detail_speakers"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/session_detail_sumary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/session_detail_sumary_label"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Es hora de mostrar que puede hacer Drupal 8 por nosotros en materia de RESTful. Esta charla va a variar con las anteriores en que no solo vamos a ver qué capacidades de REST tiene sino que las vamos a mostrar en funcionamiento en una aplicación real. Para esto utilizaremos la aplicación oficial de la DrupalCamp Granada ;)" />
+
+
+
+    <TextView
+        android:id="@+id/session_detail_point_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valora esta ponencia"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        android:layout_below="@+id/session_detail_sumary"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/session_detail_point_label"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/star_off"
+            android:tint="@color/colorAccent"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/star_off"
+            android:tint="@color/colorAccent"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/star_off"
+            android:tint="@color/colorAccent"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/star_off"
+            android:tint="@color/colorAccent"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/star_off"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

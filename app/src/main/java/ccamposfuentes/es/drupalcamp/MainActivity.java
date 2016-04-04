@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
@@ -47,19 +48,375 @@ public class MainActivity extends AppCompatActivity
 
     DBHelper mDBHelper;
     private static final String json = "{\n" +
-            "  \"speakers\": [\n" +
-            "    {\n" +
-            "      \"name\":\"speaker1\",\n" +
-            "      \"company\":\"company1\",\n" +
-            "      \"twitter\":\"@speaker1\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"name\":\"speaker2\",\n" +
-            "      \"company\":\"company2\",\n" +
-            "      \"twitter\":\"@speaker2\"\n" +
-            "    }\n" +
-            "  ],\n" +
-            "  \"sessions\": [\n" +
+            "\"speakers\": [\n" +
+            "  {\n" +
+            "    \"name\": \"Pako Garcia\",\n" +
+            "    \"username\": \"pakmanlh\",\n" +
+            "    \"company\": \"Ymbra\",\n" +
+            "    \"twitter\": \"@pakmanlh\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/nuestro-amigo-flexbox\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Kasper Myram\",\n" +
+            "    \"username\": \"myram\",\n" +
+            "    \"company\": \"X-Team\",\n" +
+            "    \"twitter\": \"@myram\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-644-1456169490.png\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/using-scrum-agile-remote-development\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Daniel Wehner\",\n" +
+            "    \"username\": \"dawehner\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-804-1459165182.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/rest-drupal-8\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Víctor Rodríguez Lledó\",\n" +
+            "    \"username\": \"vlledo\",\n" +
+            "    \"company\": \"Delirium Coder\",\n" +
+            "    \"twitter\": \"@vlledo\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-720-1456995491.png\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/arquitectura-de-la-información-drupal-8\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Rodrigo Aguilera\",\n" +
+            "    \"username\": \"rodrigoaguilera\",\n" +
+            "    \"company\": \"Ymbra\",\n" +
+            "    \"twitter\": \"@Marinero\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-610-1455315082.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/bajarse-al-behat-haz-que-tu-aplicación-se-comporte\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Floris van Geel\",\n" +
+            "    \"username\": \"040lab\",\n" +
+            "    \"company\": \"040Lab\",\n" +
+            "    \"twitter\": \"@040lab\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-760-1457535735.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/geospatial-data-3d-infrastructure-and-iot\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Mateu Aguiló Bosch\",\n" +
+            "    \"username\": \"e0ipso\",\n" +
+            "    \"company\": \"Lullabot\",\n" +
+            "    \"twitter\": \"@e0ipso\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-584-1455007007.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/future-rest-drupal\",\n" +
+            "      \"sessions/building-fastest-drupal-earth\",\n" +
+            "      \"sessions/unit-testing-drupal\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Claudia Giommarini\",\n" +
+            "    \"username\": \"claudia\",\n" +
+            "    \"company\": \"idealista\",\n" +
+            "    \"twitter\": \"@cocinaitaliana\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/cómo-sacarle-partido-tu-pagina-con-el-marketing-de-contenidos\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Jose Luis Bellido Rojas\",\n" +
+            "    \"username\": \"jlbellido\",\n" +
+            "    \"company\": \"Cocomore AG\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-732-1457348580.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/sácale-el-jugo-los-display-modes\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Sebastian Siemssen\",\n" +
+            "    \"username\": \"fubhy\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-815-1459164752.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/graphql-meets-drupal\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Ignacio Sánchez Holgueras\",\n" +
+            "    \"username\": \"isholgueras\",\n" +
+            "    \"company\": \"Hackity\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-582-1455002254.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/migrando-datos-drupal-8\",\n" +
+            "      \"sessions/hoy-estoy-muy-ansible\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Agustin Llamas Ruiz\",\n" +
+            "    \"username\": \"rabbitlair\",\n" +
+            "    \"company\": \"SwiftCircle, Desa4 Software\",\n" +
+            "    \"twitter\": \"@rabbitlair\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-609-1455281480.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/seguridad-para-todos\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Miguel Ángel Caro García\",\n" +
+            "    \"username\": \"miguelkode\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/¡twig-desde-0\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Jorge Díaz Amigo\",\n" +
+            "    \"username\": \"jorgillo\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/¡twig-desde-0\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Montaña Franco\",\n" +
+            "    \"username\": \"monfranco\",\n" +
+            "    \"company\": \"everis\",\n" +
+            "    \"twitter\": \"@mon__franco\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-603-1457098267.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/how-contribute-your-daily-work\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Christian López Espínola\",\n" +
+            "    \"username\": \"penyaskito\",\n" +
+            "    \"company\": \"Lingotek\",\n" +
+            "    \"twitter\": \"@penyaskito\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-593-1458659911.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/making-your-entities-and-fields-translatable-drupal-8\",\n" +
+            "      \"sessions/unit-testing-drupal\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Javier Gómez\",\n" +
+            "    \"username\": \"codigoweb\",\n" +
+            "    \"company\": \"Introbay\",\n" +
+            "    \"twitter\": \"@fjgomez2\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-704-1456850117.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/dockerdrupal-una-imagen-vale-más-que-mil-palabras\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Ignacio López Flores\",\n" +
+            "    \"username\": \"ignaciolflores\",\n" +
+            "    \"company\": \"Introbay\",\n" +
+            "    \"twitter\": \"@ignaciolflores\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-705-1456850051.png\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/dockerdrupal-una-imagen-vale-más-que-mil-palabras\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Emma Karayiannis\",\n" +
+            "    \"username\": \"emma.maria\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-803-1458105955.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/get-yourself-heard-open-source\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Bart Feenstra\",\n" +
+            "    \"username\": \"xano\",\n" +
+            "    \"company\": \"Druid\",\n" +
+            "    \"twitter\": \"@BartFeenstra\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-752-1457413941.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/drupal-8-plugin-system-extensibility-all\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Pedro González Serrano\",\n" +
+            "    \"username\": \"NITEMAN\",\n" +
+            "    \"company\": \"sbit.io\",\n" +
+            "    \"twitter\": \"@NITEMAN_es\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-797-1457646170.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/talk-cheap\",\n" +
+            "      \"sessions/building-fastest-drupal-earth\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"David Gil\",\n" +
+            "    \"username\": \"david.gil\",\n" +
+            "    \"company\": \"Biko2\",\n" +
+            "    \"twitter\": \"@david_gil_biko2\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-592-1455028145.png\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/mejorando-la-experiencia-de-los-editores-de-contenidos-con-paragraphs\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Lauri Eskola\",\n" +
+            "    \"username\": \"lauriii\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"@laurii1\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/markup-drupal-8-way\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Joel Rodríguez Alemán\",\n" +
+            "    \"username\": \"joelrguezaleman\",\n" +
+            "    \"company\": \"Runroom\",\n" +
+            "    \"twitter\": \"@joelrguezaleman\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-641-1458247738.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/eventdispatcher-natural-successor-hooks\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Juanen Bernal Carrillo\",\n" +
+            "    \"username\": \"jansete\",\n" +
+            "    \"company\": \"idealista\",\n" +
+            "    \"twitter\": \"@jansev3n\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-657-1456607587.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/activando-tu-amp-versión-qué-necesitas-saber\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Martín González Robles\",\n" +
+            "    \"username\": \"mgzrobles\",\n" +
+            "    \"company\": \"idealista\",\n" +
+            "    \"twitter\": \"@mgzrobles\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-581-1454962148.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/activando-tu-amp-versión-qué-necesitas-saber\",\n" +
+            "      \"sessions/varnish-para-meros-mortales\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Janez Urevc\",\n" +
+            "    \"username\": \"slashrsm\",\n" +
+            "    \"company\": \"Examiner.com\",\n" +
+            "    \"twitter\": \"@slashrsm\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-685-1456829635.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/next-generation-embedding-entity-embed\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Josef Dabernig\",\n" +
+            "    \"username\": \"dasjo\",\n" +
+            "    \"company\": \"Amazee Labs\",\n" +
+            "    \"twitter\": \"@dasjo\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-599-1455061077.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/ruling-drupal-8-d8rules\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"manuel rodriguez\",\n" +
+            "    \"username\": \"manu\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/design-sprint-toolkit-product-innovation\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Carlos Campos Fuentes\",\n" +
+            "    \"username\": \"ccamposfuentes\",\n" +
+            "    \"company\": \"SI2 Soluciones\",\n" +
+            "    \"twitter\": \"@ccamposf\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-617-1455576429.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/una-aplicación-real-de-drupal-8-como-servidor-restful-backoffice-para-apps\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Marcelo Tosco\",\n" +
+            "    \"username\": \"capynet\",\n" +
+            "    \"company\": \"Front.id\",\n" +
+            "    \"twitter\": \"@capynet\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-576-1453407680.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/una-aplicación-real-de-drupal-8-como-servidor-restful-backoffice-para-apps\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Stelios Kourakis\",\n" +
+            "    \"username\": \"skourak\",\n" +
+            "    \"company\": \"pointblank.gr\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-723-1457011445.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/designing-success-content-first-design\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Ramon Vilar\",\n" +
+            "    \"username\": \"rvilar\",\n" +
+            "    \"company\": \"Ymbra\",\n" +
+            "    \"twitter\": \"@rvilar\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/ganar-y-entregar-grandes-proyectos-desde-la-perspectiva-de-una-pequeña-empresa\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Cristina Chumillas\",\n" +
+            "    \"username\": \"ckrina\",\n" +
+            "    \"company\": \"Ymbra\",\n" +
+            "    \"twitter\": \"@chumillas\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-668-1457872466.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/mejorando-el-proceso-responsive-web-design-en-2016\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Juampy NR\",\n" +
+            "    \"username\": \"juampynr\",\n" +
+            "    \"company\": \"Lullabot\",\n" +
+            "    \"twitter\": \"@juampynr\",\n" +
+            "    \"image\": \"sites/default/files/styles/medium/public/pictures/picture-590-1455016669.jpg\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/debugging-drupal-8\"\n" +
+            "    ]\n" +
+            "  },\n" +
+            "  {\n" +
+            "    \"name\": \"Kalin CHERNEV\",\n" +
+            "    \"username\": \"kalinchernev\",\n" +
+            "    \"company\": \"\",\n" +
+            "    \"twitter\": \"\",\n" +
+            "    \"image\": \"\",\n" +
+            "    \"session\": [\n" +
+            "      \"sessions/style-guides-drupal-development-workflows\"\n" +
+            "    ]\n" +
+            "  }\n" +
+            "],\n" +
+            "\"sessions\": [\n" +
             "    {\n" +
             "      \"name\":\"Bienvenidos a esta nuestra comunidad\",\n" +
             "      \"date\":\"23/04/2016 9:30:00\",\n" +
@@ -600,11 +957,27 @@ public class MainActivity extends AppCompatActivity
             for (int i=0; i<jsonSpeakers.length(); i++) {
                 Dao dao;
                 JSONObject obj = jsonSpeakers.getJSONObject(i);
+                Speaker speaker = null;
 
                 try {
                     dao = mDBHelper.getSpeakerDao();
-                    Speaker speaker = new Speaker(obj.getString(Speaker.NAME), obj.getString(Speaker.COMPANY),
-                            obj.getString(Speaker.TWITTER));
+                    String[] session = new String[10];
+                    JSONArray sessions = obj.getJSONArray(Speaker.SESSIONS);
+
+                    if (sessions.length() >= 0) {
+                        for (int j = 0; j < sessions.length(); j++) {
+                            session[j] = sessions.getString(j);
+                        }
+                    }
+
+                    if ((obj.getString(Speaker.IMAGE).equals(""))) {
+                        speaker = new Speaker(obj.getString(Speaker.USERNAME), obj.getString(Speaker.COMPANY),
+                                obj.getString(Speaker.TWITTER), session);
+                    }
+                    else {
+                        speaker = new Speaker(obj.getString(Speaker.USERNAME), obj.getString(Speaker.COMPANY),
+                                obj.getString(Speaker.TWITTER), obj.getString(Speaker.IMAGE), session);
+                    }
                     dao.create(speaker);
                 } catch (SQLException e) {
                     Log.e("MainActivity", e.toString());
