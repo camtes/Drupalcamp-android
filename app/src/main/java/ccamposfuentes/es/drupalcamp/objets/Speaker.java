@@ -23,6 +23,7 @@ public class Speaker {
     public static final String TWITTER = "twitter";
     public static final String IMAGE = "image";
     public static final String SESSIONS = "session";
+    public static final String TYPE = "type";
 
     @DatabaseField(generatedId = true, columnName = ID)
     private int id;
@@ -42,6 +43,9 @@ public class Speaker {
     @DatabaseField(columnName = SESSIONS, dataType = DataType.SERIALIZABLE)
     private String[] session;
 
+    @DatabaseField(columnName = TYPE)
+    private int type;
+
     public Speaker() {}
 
     public Speaker(String name, String company, String twitter, String image, String[] session) {
@@ -50,12 +54,15 @@ public class Speaker {
         this.twitter = twitter;
         this.image = image;
         this.session = session;
+        this.type = 1;
     }
 
     public Speaker(String username, String company, String twitter, String[] session) {
         this.username = username;
         this.company = company;
         this.twitter = twitter;
+        this.session = session;
+        this.type = 0;
     }
 
     public int getId() {
@@ -104,5 +111,13 @@ public class Speaker {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
     }
 }

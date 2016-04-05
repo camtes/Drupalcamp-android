@@ -1,19 +1,13 @@
 package ccamposfuentes.es.drupalcamp;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,21 +16,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
@@ -955,7 +944,7 @@ public class MainActivity extends AppCompatActivity
             JSONArray jsonSessions = jsonObject.getJSONArray("sessions");
 
             for (int i=0; i<jsonSpeakers.length(); i++) {
-                Dao dao;
+                Dao<Speaker, Integer> dao;
                 JSONObject obj = jsonSpeakers.getJSONObject(i);
                 Speaker speaker = null;
 
@@ -978,6 +967,7 @@ public class MainActivity extends AppCompatActivity
                         speaker = new Speaker(obj.getString(Speaker.USERNAME), obj.getString(Speaker.COMPANY),
                                 obj.getString(Speaker.TWITTER), obj.getString(Speaker.IMAGE), session);
                     }
+
                     dao.create(speaker);
                 } catch (SQLException e) {
                     Log.e("MainActivity", e.toString());
@@ -985,7 +975,7 @@ public class MainActivity extends AppCompatActivity
             }
 
             for (int i=0; i<jsonSessions.length(); i++) {
-                Dao dao;
+                Dao<Session, Integer> dao;
                 JSONObject obj = jsonSessions.getJSONObject(i);
 
                 try {

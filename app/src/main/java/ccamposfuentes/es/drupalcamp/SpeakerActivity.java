@@ -41,11 +41,6 @@ public class SpeakerActivity extends AppCompatActivity {
         try {
             dao = mDBHelper.getSpeakerDao();
             List speakers = dao.queryForAll();
-            if (speakers.isEmpty()) {
-                Log.d("SpeakerActivity", "No se encontraron usuarios con nombre = Fede");
-            } else {
-                Log.d("SpeakerActivity", "Recuperado usuarios con nombre = Fede " + speakers);
-            }
 
             speakers_ = speakers;
         } catch (SQLException e) {

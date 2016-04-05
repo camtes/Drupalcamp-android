@@ -60,8 +60,23 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return speakers.get(position).getType();
+    }
+
+    @Override
     public SpeakerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_speaker_item, null);
+
+        View v = null;
+
+        switch (viewType) {
+            case 0:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_speaker_item, null);
+                break;
+            case 1:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_speaker_item_image, null);
+                break;
+        }
 
         SpeakerViewHolder svh = new SpeakerViewHolder(v);
         return svh;
@@ -73,17 +88,19 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
 
         Speaker speaker = speakers.get(position);
 
-        holder.name.setText(speaker.getUsername());
-        holder.company.setText(speaker.getCompany());
-        holder.twitter.setText(speaker.getTwitter());
-        if (speaker.getImage() != null) {
-            String urlimage = URL_SERVER+speaker.getImage();
-            Picasso.with(context)
-                    .load(urlimage)
-                    .into(holder.image);
-
-            holder.image.setPadding(0,0,0,0);
-            holder.image.setBackgroundColor(context.getColor(android.R.color.transparent));
+        switch (speaker.getType()) {
+            case 0:
+                holder.name.setText(speaker.getUsername());
+                holder.company.setText(speaker.getCompany());
+                holder.twitter.setText(speaker.getTwitter());
+                break;
+            case 1:
+                holder.name.setText(speaker.getUsername());
+                holder.company.setText(speaker.getCompany());
+                holder.twitter.setText(speaker.getTwitter());
+                Picasso.with(context)
+                        .load(URL_SERVER+speaker.getImage())
+                        .into(holder.image);
         }
     }
 
