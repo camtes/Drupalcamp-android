@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
@@ -25,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.sql.SQLException;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
@@ -485,7 +485,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Desayuno\",\n" +
-            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"date\":\"24/04/2016 11:30:00\",\n" +
             "      \"room\":1,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -506,7 +506,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Sesión de cierre  \",\n" +
-            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"date\":\"24/04/2016 14:00:00\",\n" +
             "      \"room\":1,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -590,7 +590,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Desayuno\",\n" +
-            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"date\":\"24/04/2016 11:30:00\",\n" +
             "      \"room\":2,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -611,7 +611,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Sesión de cierre  \",\n" +
-            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"date\":\"24/04/2016 14:00:00\",\n" +
             "      \"room\":2,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -695,7 +695,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Desayuno\",\n" +
-            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"date\":\"24/04/2016 11:30:00\",\n" +
             "      \"room\":3,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -716,7 +716,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Sesión de cierre  \",\n" +
-            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"date\":\"24/04/2016 14:00:00\",\n" +
             "      \"room\":3,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -800,7 +800,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Desayuno\",\n" +
-            "      \"date\":\"23/04/2016 11:30:00\",\n" +
+            "      \"date\":\"24/04/2016 11:30:00\",\n" +
             "      \"room\":4,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -821,7 +821,7 @@ public class MainActivity extends AppCompatActivity
             "    },\n" +
             "    {\n" +
             "      \"name\":\"Sesión de cierre  \",\n" +
-            "      \"date\":\"23/04/2016 14:00:00\",\n" +
+            "      \"date\":\"24/04/2016 14:00:00\",\n" +
             "      \"room\":4,\n" +
             "      \"speaker\":\"\",\n" +
             "      \"type\":1\n" +
@@ -829,7 +829,6 @@ public class MainActivity extends AppCompatActivity
             "  ]\n" +
             "}\n";
 
-    private RelativeLayout rl_friday, rl_saturday, rl_sunday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -852,8 +851,13 @@ public class MainActivity extends AppCompatActivity
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        String mDay = null;
+        if (getIntent().hasExtra("day"))
+            mDay = getIntent().getExtras().getString("day");
+
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),
-                MainActivity.this));
+                MainActivity.this, mDay));
 
         //TabLayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
@@ -899,9 +903,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -912,12 +914,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_today) {
-
-        } else if (id == R.id.nav_speakers) {
+        if (id == R.id.nav_speakers) {
             startActivity(new Intent(this, SpeakerActivity.class));
         } else if (id == R.id.nav_fav) {
 
+        } else if (id == R.id.nav_calendar_saturday) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("day", "Saturday");
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
+        } else if (id == R.id.nav_calendar_sunday) {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("day", "Sunday");
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
@@ -951,7 +963,7 @@ public class MainActivity extends AppCompatActivity
             for (int i=0; i<jsonSpeakers.length(); i++) {
                 Dao<Speaker, Integer> dao;
                 JSONObject obj = jsonSpeakers.getJSONObject(i);
-                Speaker speaker = null;
+                Speaker speaker;
 
                 try {
                     dao = mDBHelper.getSpeakerDao();

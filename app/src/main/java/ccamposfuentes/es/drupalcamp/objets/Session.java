@@ -20,6 +20,7 @@ public class Session {
     public static final String ID = "_id";
     public static final String NAME = "name";
     public static final String DATE = "date";
+    public static final String DAY = "day";
     public static final String ROOM = "room";
     public static final String SPEAKER = "speaker";
     public static final String TYPE = "type";
@@ -32,6 +33,9 @@ public class Session {
 
     @DatabaseField(columnName = DATE)
     private String date;
+
+    @DatabaseField(columnName = DAY)
+    private String day;
 
     @DatabaseField(columnName = ROOM)
     private int room;
@@ -51,6 +55,11 @@ public class Session {
         this.room = room;
         this.speaker = speaker;
         this.type = type;
+
+        if (date.contains("23"))
+            day = "Saturday";
+        else if (date.contains("24"))
+            day = "Sunday";
     }
 
     public int getId() {
@@ -75,6 +84,10 @@ public class Session {
 
     public void setDate(String fechaNacimiento) {
         this.date = fechaNacimiento;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public int getRoom() {
@@ -102,6 +115,22 @@ public class Session {
     }
 
     public String getHour() {
+        String hour = null;
+        Date newDate;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatHour = new SimpleDateFormat("HH:mm");
+
+        try {
+            newDate = formatter.parse(date);
+            hour = formatHour.format(newDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return hour;
+    }
+
+    public String getDay() {
         String hour = null;
         Date newDate;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

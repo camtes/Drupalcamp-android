@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.sql.Date;
+
 import ccamposfuentes.es.drupalcamp.PageFragment;
 
 /**
@@ -18,10 +20,12 @@ public class PageAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 4;
     private String tabTitles[] = new String[] { "Sala 1", "Sala 2", "Sala 3", "Sala 4" };
     private Context context;
+    private String day;
 
-    public PageAdapter(FragmentManager fm, Context context) {
+    public PageAdapter(FragmentManager fm, Context context, String day) {
         super(fm);
         this.context = context;
+        this.day = day;
     }
 
     @Override
@@ -47,7 +51,7 @@ public class PageAdapter extends FragmentPagerAdapter {
                 break;
         }
 
-        return PageFragment.newInstance(position + 1);
+        return PageFragment.newInstance(position + 1, day);
     }
 
     @Override

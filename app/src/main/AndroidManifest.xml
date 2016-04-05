@@ -10,9 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -30,6 +28,7 @@
                 android:value="ccamposfuentes.es.drupalcamp.MainActivity" />
         </activity>
         <activity android:name=".SessionDetail" />
+        <activity android:name=".ScheduleActivity"></activity>
     </application>
 
 </manifest>

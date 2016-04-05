@@ -2,7 +2,6 @@ package ccamposfuentes.es.drupalcamp.adapters;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,16 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ccamposfuentes.es.drupalcamp.PicassoOnScrollListener;
 import ccamposfuentes.es.drupalcamp.R;
-import ccamposfuentes.es.drupalcamp.objets.Session;
 import ccamposfuentes.es.drupalcamp.objets.Speaker;
 
 
