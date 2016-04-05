@@ -33,8 +33,6 @@ public class SpeakerActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-//        speakers.add(new Speaker("Carlos Campos", "SI2 Soluciones", "@ccamposf",
-//                "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAATSAAAAJGE1ZDUxYjlkLWFkMTEtNGYzZS1iNDQ4LTIzMWExNTIxZjUxNA.jpg"));
 
         // Connect to database
         mDBHelper = OpenHelperManager.getHelper(this, DBHelper.class);
@@ -59,10 +57,10 @@ public class SpeakerActivity extends AppCompatActivity {
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setHasFixedSize(true);
 
         SpeakerAdapter mAdapter = new SpeakerAdapter(speakers_, this);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     @Override

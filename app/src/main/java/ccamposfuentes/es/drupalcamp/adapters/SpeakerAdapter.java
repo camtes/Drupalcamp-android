@@ -12,12 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ccamposfuentes.es.drupalcamp.PicassoOnScrollListener;
 import ccamposfuentes.es.drupalcamp.R;
+import ccamposfuentes.es.drupalcamp.objets.Session;
 import ccamposfuentes.es.drupalcamp.objets.Speaker;
 
 
@@ -67,16 +71,19 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
     @Override
     public void onBindViewHolder(final SpeakerViewHolder holder, final int position) {
 
-        holder.name.setText(speakers.get(position).getUsername());
-        holder.company.setText(speakers.get(position).getCompany());
-        holder.twitter.setText(speakers.get(position).getTwitter());
-        if (speakers.get(position).getImage() != null) {
-            Picasso.with(context).load(URL_SERVER+speakers.get(position).getImage()).into(holder.image);
+        Speaker speaker = speakers.get(position);
+
+        holder.name.setText(speaker.getUsername());
+        holder.company.setText(speaker.getCompany());
+        holder.twitter.setText(speaker.getTwitter());
+        if (speaker.getImage() != null) {
+            String urlimage = URL_SERVER+speaker.getImage();
+            Picasso.with(context)
+                    .load(urlimage)
+                    .into(holder.image);
+
             holder.image.setPadding(0,0,0,0);
             holder.image.setBackgroundColor(context.getColor(android.R.color.transparent));
-        }
-        else {
-            holder.image.getDrawable().setTint(context.getColor(android.R.color.white));
         }
     }
 

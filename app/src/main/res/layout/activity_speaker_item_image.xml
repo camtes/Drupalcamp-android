@@ -24,10 +24,10 @@
             <ImageView
                 android:id="@+id/iv_speaker_image"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/estrella"
-                android:padding="8dp"
+                android:scaleType="centerCrop"
                 />
 
             <LinearLayout
@@ -69,14 +69,6 @@
                 android:text="\@ccamposf"
                 android:layout_marginBottom="16dp"
                 />
-
-            <!--<View-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@android:color/black"-->
-                <!--android:alpha="0.1"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:paddingTop="8dp"/>-->
 
         </RelativeLayout>
 
