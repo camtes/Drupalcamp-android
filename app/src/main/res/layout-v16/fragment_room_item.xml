@@ -22,6 +22,7 @@
                 android:gravity="center_vertical"
                 android:textSize="21sp"
                 android:textStyle="bold"
+                android:fontFamily="sans-serif-light"
                 />
 
             <TextView
@@ -30,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
+                android:fontFamily="sans-serif"
                 android:layout_toLeftOf="@+id/tv_schedule_hour"
                 android:layout_alignTop="@+id/tv_schedule_hour"
                 android:layout_alignParentLeft="true"
@@ -44,6 +46,7 @@
                 android:layout_alignParentRight="true"
                 android:textSize="32sp"
                 android:alpha="0.7"
+                android:fontFamily="sans-serif-light"
                 android:layout_below="@+id/tv_schedule_title" />
 
         </RelativeLayout>

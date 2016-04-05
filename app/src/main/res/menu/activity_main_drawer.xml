@@ -20,10 +20,6 @@
     <item android:title="@string/calendar">
         <menu>
             <item
-                android:id="@+id/nav_calendar_friday"
-                android:icon="@drawable/ic_event_black_24dp"
-                android:title="@string/nav_friday" />
-            <item
                 android:id="@+id/nav_calendar_saturday"
                 android:icon="@drawable/ic_event_black_24dp"
                 android:title="@string/nav_saturday" />
@@ -39,6 +35,7 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
+                android:actionProviderClass="android.widget.ShareActionProvider"
                 android:title="@string/share" />
         </menu>
     </item>
