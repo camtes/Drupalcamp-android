@@ -19,6 +19,7 @@ import android.view.MenuItem;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+import com.onesignal.OneSignal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -834,6 +835,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        OneSignal.startInit(this).init();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
