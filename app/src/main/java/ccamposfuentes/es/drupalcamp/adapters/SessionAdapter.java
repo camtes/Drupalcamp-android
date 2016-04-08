@@ -1,24 +1,20 @@
 package ccamposfuentes.es.drupalcamp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
-
-import java.sql.SQLException;
 import java.util.List;
 
 import ccamposfuentes.es.drupalcamp.R;
-import ccamposfuentes.es.drupalcamp.database.DBHelper;
-import ccamposfuentes.es.drupalcamp.objets.Session;
-import ccamposfuentes.es.drupalcamp.objets.Speaker;
+import ccamposfuentes.es.drupalcamp.SessionDetail;
+import ccamposfuentes.es.drupalcamp.objects.Session;
+
 
 /**
  * Author: Carlos Campos
@@ -77,13 +73,21 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         switch (itemsSessions.get(position).getType()) {
             case 0:
                 holder.title.setText(itemsSessions.get(position).getName());
                 holder.speaker.setText(itemsSessions.get(position).getSpeaker());
                 holder.hour.setText(itemsSessions.get(position).getHour());
+                holder.card.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, SessionDetail.class);
+                        intent.putExtra("idSession", itemsSessions.get(position).getId());
+                        context.startActivity(intent);
+                    }
+                });
                 break;
             case 1:
                 holder.title.setText(itemsSessions.get(position).getName());

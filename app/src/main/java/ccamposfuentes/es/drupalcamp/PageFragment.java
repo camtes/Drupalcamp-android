@@ -13,16 +13,13 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.stmt.Where;
 
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import ccamposfuentes.es.drupalcamp.adapters.SessionAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
-import ccamposfuentes.es.drupalcamp.objets.Session;
+import ccamposfuentes.es.drupalcamp.objects.Session;
 
 /**
  * Author: Carlos Campos

@@ -27,8 +27,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ccamposfuentes.es.drupalcamp.MainActivity" />
         </activity>
-        <activity android:name=".SessionDetail" />
-        <activity android:name=".ScheduleActivity"></activity>
+        <activity android:name=".SessionDetail">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="ccamposfuentes.es.drupalcamp.MainActivity" />
+        </activity>
+        <activity android:name=".ScheduleActivity">
+
+        </activity>
     </application>
 
 </manifest>

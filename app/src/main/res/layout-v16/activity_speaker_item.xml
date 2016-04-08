@@ -14,6 +14,7 @@
         card_view:cardCornerRadius="3dp"
         app:cardElevation="2dp"
         card_view:cardUseCompatPadding="true"
+        android:clickable="true"
         >
 
         <RelativeLayout

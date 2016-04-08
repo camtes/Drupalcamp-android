@@ -10,8 +10,9 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import ccamposfuentes.es.drupalcamp.objets.Session;
-import ccamposfuentes.es.drupalcamp.objets.Speaker;
+import ccamposfuentes.es.drupalcamp.objects.Session;
+import ccamposfuentes.es.drupalcamp.objects.Speaker;
+
 
 /**
  * Author: Carlos Campos

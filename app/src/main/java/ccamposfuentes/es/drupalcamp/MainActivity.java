@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
@@ -25,13 +26,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Date;
 import java.sql.SQLException;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
-import ccamposfuentes.es.drupalcamp.objets.Session;
-import ccamposfuentes.es.drupalcamp.objets.Speaker;
+import ccamposfuentes.es.drupalcamp.objects.Session;
+import ccamposfuentes.es.drupalcamp.objects.Speaker;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -837,6 +837,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         OneSignal.startInit(this).init();
+        String id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -907,7 +908,6 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-
 
         return super.onOptionsItemSelected(item);
     }

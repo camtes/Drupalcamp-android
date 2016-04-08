@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ccamposfuentes.es.drupalcamp.R;
-import ccamposfuentes.es.drupalcamp.objets.Speaker;
+import ccamposfuentes.es.drupalcamp.objects.Speaker;
 
 
 /**
