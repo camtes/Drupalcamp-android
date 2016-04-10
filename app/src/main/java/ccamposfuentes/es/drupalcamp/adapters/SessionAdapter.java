@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,20 +78,21 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
 
         switch (itemsSessions.get(position).getType()) {
             case 0:
-                holder.title.setText(itemsSessions.get(position).getName());
-                holder.speaker.setText(itemsSessions.get(position).getSpeaker());
+                holder.title.setText(itemsSessions.get(position).getTitle());
+//                holder.speaker.setText(itemsSessions.get(position).getSpeaker());
                 holder.hour.setText(itemsSessions.get(position).getHour());
                 holder.card.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, SessionDetail.class);
                         intent.putExtra("idSession", itemsSessions.get(position).getId());
+                        Log.i("SessionAdapter", "Load sessionId = "+itemsSessions.get(position).getId());
                         context.startActivity(intent);
                     }
                 });
                 break;
             case 1:
-                holder.title.setText(itemsSessions.get(position).getName());
+                holder.title.setText(itemsSessions.get(position).getTitle());
         }
 
     }

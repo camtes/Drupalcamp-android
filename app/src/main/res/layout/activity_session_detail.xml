@@ -20,132 +20,148 @@
         android:textSize="21sp"
         android:textColor="@android:color/white" />
 
-    <TextView
-        android:id="@+id/tv_speaker_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/speakers"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center_horizontal"
-        android:padding="16dp"
-        android:layout_below="@+id/tv_session_detail_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_sessions_detail_speakers"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/tv_speaker_label" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_session_detail_title">
 
-    <TextView
-        android:id="@+id/tv_session_detail_sumary_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sumary"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center_horizontal"
-        android:padding="16dp"
-        android:layout_below="@+id/rv_sessions_detail_speakers"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_session_detail_sumary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_session_detail_sumary_label"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp" />
+            <TextView
+                android:id="@+id/tv_speaker_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/speakers"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:padding="16dp"
+                android:layout_below="@+id/tv_session_detail_title"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/session_detail_point_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rate_session"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center_horizontal"
-        android:padding="16dp"
-        android:layout_below="@+id/tv_session_detail_sumary"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_sessions_detail_speakers"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/tv_speaker_label" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/session_detail_point_label"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/tv_session_detail_sumary_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sumary"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:padding="16dp"
+                android:layout_below="@+id/rv_sessions_detail_speakers"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/ib_start_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/gray"
-            />
+            <TextView
+                android:id="@+id/tv_session_detail_sumary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_session_detail_sumary_label"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
 
-        <ImageButton
-            android:id="@+id/ib_start_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/gray"
-            />
+            <TextView
+                android:id="@+id/session_detail_point_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_session"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:padding="16dp"
+                android:layout_below="@+id/tv_session_detail_sumary"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/ib_start_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/gray"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/session_detail_point_label"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
 
-        <ImageButton
-            android:id="@+id/ib_start_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/gray"
-            />
+                <ImageButton
+                    android:id="@+id/ib_start_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/gray"
+                    />
 
-        <ImageButton
-            android:id="@+id/ib_start_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:scaleX="1.3"
-            android:scaleY="1.3"
-            android:background="@android:color/transparent"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/gray"
-            />
+                <ImageButton
+                    android:id="@+id/ib_start_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/gray"
+                    />
 
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/ib_start_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/gray"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ib_start_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/gray"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ib_start_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/gray"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
 </RelativeLayout>

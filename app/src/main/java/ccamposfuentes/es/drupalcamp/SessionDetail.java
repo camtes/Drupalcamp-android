@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -102,12 +103,12 @@ public class SessionDetail extends AppCompatActivity {
         // Get session data
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            loadSession(bundle.getInt("idSession"));
+            loadSession(bundle.getString("idSession"));
         }
 
     }
 
-    public void loadSession(int id) {
+    public void loadSession(String id) {
         // Connect to database
         DBHelper mDBHelper = OpenHelperManager.getHelper(getApplicationContext(), DBHelper.class);
 
@@ -128,6 +129,7 @@ public class SessionDetail extends AppCompatActivity {
      * Set session UI data
      */
     public void setSession() {
-        title.setText(session.getName());
+        title.setText(session.getTitle());
+        sumary.setText(Html.fromHtml(session.getText()));
     }
 }
