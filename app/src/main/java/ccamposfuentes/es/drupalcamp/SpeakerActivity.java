@@ -10,16 +10,26 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import ccamposfuentes.es.apiclient.ApiClient;
+import ccamposfuentes.es.apiclient.ApiEndPointInterface;
+import ccamposfuentes.es.apiclient.restObject.RestSession;
+import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
 import ccamposfuentes.es.drupalcamp.adapters.SpeakerAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
+import ccamposfuentes.es.drupalcamp.objects.Session;
 import ccamposfuentes.es.drupalcamp.objects.Speaker;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SpeakerActivity extends AppCompatActivity {
 
-    List<Speaker> speakers_;
-    DBHelper mDBHelper;
+    private List<Speaker> speakers_;
+    private DBHelper mDBHelper;
+    private SpeakerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +43,11 @@ public class SpeakerActivity extends AppCompatActivity {
         // Connect to database
         mDBHelper = OpenHelperManager.getHelper(this, DBHelper.class);
 
-        Dao dao;
+        Dao<Speaker, Integer> dao;
         try {
             dao = mDBHelper.getSpeakerDao();
-            List speakers = dao.queryForAll();
+            speakers_ = dao.queryForAll();
 
-            speakers_ = speakers;
         } catch (SQLException e) {
             Log.e("SpeakerActivity", "Error buscando usuario");
         }
@@ -50,8 +59,9 @@ public class SpeakerActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
 
-        SpeakerAdapter mAdapter = new SpeakerAdapter(speakers_, this);
+        mAdapter = new SpeakerAdapter(speakers_, this);
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
     @Override

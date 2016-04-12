@@ -1,5 +1,7 @@
 package ccamposfuentes.es.drupalcamp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,11 +17,18 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import ccamposfuentes.es.apiclient.ApiClient;
+import ccamposfuentes.es.apiclient.ApiEndPointInterface;
+import ccamposfuentes.es.apiclient.restObject.RestSession;
 import ccamposfuentes.es.drupalcamp.adapters.SessionAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
 import ccamposfuentes.es.drupalcamp.objects.Session;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Author: Carlos Campos
@@ -35,6 +44,9 @@ public class PageFragment extends Fragment {
     private int mPage;
     private List<Session> itemsSessions;
     private String day;
+    private RecyclerView mRecyclerView;
+    private SessionAdapter mAdapter;
+    private DBHelper mDBHelper;
 
     public static PageFragment newInstance(int page, String day) {
         Bundle args = new Bundle();
@@ -50,14 +62,19 @@ public class PageFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
         day = getArguments().getString(ARG_DAY);
+        itemsSessions = new ArrayList<>();
+
+        // Connect to database
+        mDBHelper = OpenHelperManager.getHelper(getContext(), DBHelper.class);
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_room, container, false);
 
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_sessions_room);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_sessions_room);
 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -73,7 +90,6 @@ public class PageFragment extends Fragment {
             dao = mDBHelper.getSessionDao();
 
             if (day != null) {
-//                sessions = dao.queryForEq(Session.ROOM, mPage);
 
                 QueryBuilder<Session, Integer> queryBuilder = dao.queryBuilder();
                 queryBuilder.where().eq(Session.ROOM, mPage).and().eq(Session.DAY, day);
@@ -98,9 +114,12 @@ public class PageFragment extends Fragment {
         }
 
         // Adaptador
-        SessionAdapter mAdapter = new SessionAdapter(getContext(), itemsSessions);
+        mAdapter = new SessionAdapter(getContext(), itemsSessions);
         mRecyclerView.setAdapter(mAdapter);
+
 
         return view;
     }
+
+
 }

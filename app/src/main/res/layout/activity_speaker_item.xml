@@ -27,7 +27,7 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/estrella"
-                android:padding="8dp"
+                android:padding="16dp"
                 />
 
             <LinearLayout

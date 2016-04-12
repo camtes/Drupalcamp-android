@@ -29,10 +29,18 @@ public class RestSession {
 //    @SerializedName("field_votos")
 //    List<RestVotos> votos;
 
+    @SerializedName("field_session_type_internal")
+    List<RestValue> type;
+
+    @SerializedName("field_room")
+    List<RestValue> room;
+
 
     public RestSession() {}
 
-    public RestSession(List<RestValue> nid, List<RestValue> title, List<RestValue> text, List<RestValue> date, List<RestTarget> difficulty, List<RestValue> language, List<RestTarget> speakers) {
+    public RestSession(List<RestValue> nid, List<RestValue> title, List<RestValue> text,
+                       List<RestValue> date, List<RestTarget> difficulty, List<RestValue> language,
+                       List<RestTarget> speakers, List<RestValue> type, List<RestValue> room) {
         this.nid = nid;
         this.title = title;
         this.text = text;
@@ -40,6 +48,8 @@ public class RestSession {
         this.difficulty = difficulty;
         this.language = language;
         this.speakers = speakers;
+        this.type = type;
+        this.room = room;
     }
 
     public List<RestValue> getNid() {
@@ -96,5 +106,21 @@ public class RestSession {
 
     public void setSpeakers(List<RestTarget> speakers) {
         this.speakers = speakers;
+    }
+
+    public List<RestValue> getType() {
+        return type;
+    }
+
+    public void setType(List<RestValue> type) {
+        this.type = type;
+    }
+
+    public List<RestValue> getRoom() {
+        return room;
+    }
+
+    public void setRoom(List<RestValue> room) {
+        this.room = room;
     }
 }

@@ -62,7 +62,7 @@ public class Session {
     private String[] speakers;
 
     @DatabaseField(columnName = TYPE)
-    private int type;
+    private String type;
 
     @DatabaseField(columnName = VOTOS)
     private String votos;
@@ -73,16 +73,19 @@ public class Session {
 
     public Session() {}
 
-    public Session(String id, String title, String text, String difficulty, String language, String date, int room, String[] speakers, int type) {
+    public Session(String id, String title, String text, String difficulty, String language,
+                   String date, String room, String[] speakers, String type) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.difficulty = difficulty;
         this.language = language;
         this.date = date;
-        this.room = room;
+        this.room = Integer.valueOf(room);
         this.speakers = speakers;
         this.type = type;
+        this.votos = "";
+        this.votantes = "";
 
         if (date.contains("23"))
             day = "Saturday";
@@ -118,19 +121,25 @@ public class Session {
         this.room = room;
     }
 
-    public String[] getSpeaker() {
-        return speakers;
-    }
-
-    public void setSpeaker(String[] speakers) {
-        this.speakers = speakers;
-    }
-
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public int getIntType() {
+        int mType;
+
+        switch (type) {
+            case "session":
+                mType = 0;
+                break;
+            default:
+                mType = 1;
+        }
+
+        return mType;
+    }
+
+    public void setType(String type) {
         this.type = type;
     }
 

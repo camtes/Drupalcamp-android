@@ -3,6 +3,7 @@ package ccamposfuentes.es.apiclient;
 import java.util.List;
 
 import ccamposfuentes.es.apiclient.restObject.RestSession;
+import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
@@ -20,13 +21,23 @@ public interface ApiEndPointInterface {
     String masterToken = "Dhkc_C7RNrSQfJTmUrEYKXa1Ol2gT4aTpMeR2pXrF2w";
 
     @Headers({
-            "Authorization Bearer "+masterToken,
-            "Content-Type application/json"
+            "Authorization: Bearer "+masterToken,
+            "Content-Type: application/json"
     })
     @GET("user_for_app")
     Call<String> getToken(@Field("deviceId") String id);
 
+    @Headers({
+            "Authorization: Bearer "+masterToken,
+            "Content-Type: application/json"
+    })
     @GET("sessions")
     Call<List<RestSession>> getSessions();
 
+    @Headers({
+            "Authorization: Bearer "+masterToken,
+            "Content-Type: application/json"
+    })
+    @GET("speakers")
+    Call<List<RestSpeaker>> getSpeakers();
 }

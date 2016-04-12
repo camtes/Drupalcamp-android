@@ -87,14 +87,12 @@ public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerV
             case 0:
                 holder.name.setText(speaker.getUsername());
                 holder.company.setText(speaker.getCompany());
-                holder.twitter.setText(speaker.getTwitter());
                 break;
             case 1:
                 holder.name.setText(speaker.getUsername());
                 holder.company.setText(speaker.getCompany());
-                holder.twitter.setText(speaker.getTwitter());
                 Picasso.with(context)
-                        .load(URL_SERVER+speaker.getImage())
+                        .load(speaker.getImage())
                         .into(holder.image);
         }
     }
