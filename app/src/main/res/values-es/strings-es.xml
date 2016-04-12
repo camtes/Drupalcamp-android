@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DrupalCamp Spain</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="Speaker">Ponentes</string>
+    <string name="calendar_activity">Calendario</string>
+    <string name="schedule">Calendario</string>
+    <string name="speakers">Ponentes</string>
+    <string name="favorites">Favoritos</string>
+    <string name="comunications">Comunicaciones</string>
+    <string name="breakfast">Desayuno</string>
+    <string name="assembly">Asamblea</string>
+    <string name="close_session">Sesión de cierre</string>
+    <string name="lunch">Almuerzo</string>
+    <string name="share">Compartir</string>
+    <string name="calendar">Calendario</string>
+    <string name="nav_friday">Viernes</string>
+    <string name="nav_saturday">Sabado</string>
+    <string name="nav_sunday">Domingo</string>
+    <string name="sumary">Resumen</string>
+    <string name="rate_session">Valorar sesión</string>
+    <string name="lToken">token</string>
+    <string name="token">Dhkc_C7RNrSQfJTmUrEYKXa1Ol2gT4aTpMeR2pXrF2w</string>
+
+</resources>
