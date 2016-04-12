@@ -94,4 +94,12 @@ public class Speaker {
     public int getType() {
         return type;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

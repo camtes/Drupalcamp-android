@@ -11,17 +11,22 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import ccamposfuentes.es.apiclient.ApiClient;
 import ccamposfuentes.es.apiclient.ApiEndPointInterface;
+import ccamposfuentes.es.apiclient.restObject.RestRegister;
 import ccamposfuentes.es.apiclient.restObject.RestSession;
 import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
 import ccamposfuentes.es.drupalcamp.objects.Session;
 import ccamposfuentes.es.drupalcamp.objects.Speaker;
+import ccamposfuentes.es.drupalcamp.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,24 +53,15 @@ public class Splash extends AppCompatActivity {
         // Connect to database
         mDBHelper = OpenHelperManager.getHelper(this, DBHelper.class);
 
-        // Save sessions if db is empty
-        SharedPreferences sharedPreferences = this.getSharedPreferences("DrupalCamp",
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (!sharedPreferences.getBoolean("database", false)) {
-            editor.putBoolean("database", true);
-            editor.apply();
-
-            getSessions();
-            getSpeaker();
+        // Get Token
+        JSONObject deviceId = new JSONObject();
+        try {
+            deviceId.put("deviceId",Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID));
+//            deviceId.put("deviceId", "sd65f4sd65f4sd65f4s");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-
-        if (!sharedPreferences.getBoolean("register", false)) {
-            editor.putBoolean("register", true);
-            editor.apply();
-
-            user_for_app(Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID));
-        }
+        user_for_app(deviceId);
 
         finish();
         startActivity(new Intent(this, MainActivity.class));
@@ -81,7 +77,8 @@ public class Splash extends AppCompatActivity {
     public void getSessions () {
         // Retrofit - Call
         ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
-        final Call<List<RestSession>> call = client.getSessions();
+        final Call<List<RestSession>> call = client.getSessions("Bearer "
+                + Utils.readSharedPrefences(this, getString(R.string.lToken)));
 
         call.enqueue(new Callback<List<RestSession>>() {
             @Override
@@ -166,7 +163,8 @@ public class Splash extends AppCompatActivity {
     public void getSpeaker () {
         // Retrofit - Call
         ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
-        final Call<List<RestSpeaker>> call = client.getSpeakers();
+        final Call<List<RestSpeaker>> call = client.getSpeakers("Bearer "
+                + Utils.readSharedPrefences(this, getString(R.string.lToken)));
 
         call.enqueue(new Callback<List<RestSpeaker>>() {
             @Override
@@ -229,20 +227,32 @@ public class Splash extends AppCompatActivity {
      * Register new device
      * @param deviceId deviceId
      */
-    public void user_for_app(String deviceId) {
+    public void user_for_app(JSONObject deviceId) {
         // Retrofit - Call
-        ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
-        final Call<List<RestSpeaker>> call = client.getSpeakers();
 
-        call.enqueue(new Callback<List<RestSpeaker>>() {
+        ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
+        final Call<RestRegister> call = client.getToken(deviceId);
+
+        call.enqueue(new Callback<RestRegister>() {
 
             @Override
-            public void onResponse(Call<List<RestSpeaker>> call, Response<List<RestSpeaker>> response) {
+            public void onResponse(Call<RestRegister> call, Response<RestRegister> response) {
+                RestRegister items = response.body();
+                Utils.saveSharedPreferences(getApplicationContext(), getString(R.string.lToken), items.getOauth_token());
 
+                SharedPreferences sharedPreferences = getSharedPreferences("DrupalCamp",
+                        Context.MODE_PRIVATE);
+
+                if (!sharedPreferences.getBoolean("database", false)) {
+                    Utils.saveBooleanSharedPreferences(getApplicationContext(), "database", true);
+
+                    getSessions();
+                    getSpeaker();
+                }
             }
 
             @Override
-            public void onFailure(Call<List<RestSpeaker>> call, Throwable t) {
+            public void onFailure(Call<RestRegister> call, Throwable t) {
 
             }
         });

@@ -38,25 +38,6 @@ public class ApiClient {
         return retrofit.create(serviceClass);
     }
 
-    public Call<List<RestSession>> getSession () {
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-                .create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(getDefaultClient())
-                .build();
-
-        // Prepare call in Retrofit
-        ApiEndPointInterface endPoint = retrofit.create(ApiEndPointInterface.class);
-
-        return endPoint.getSessions();
-
-    }
-
     /**
      * Init default HTTP client to connect with server
      * @return OkHttpClient

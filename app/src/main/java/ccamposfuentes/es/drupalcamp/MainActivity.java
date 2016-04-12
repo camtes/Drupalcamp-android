@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_speakers) {
             startActivity(new Intent(this, SpeakerActivity.class));
-        } else if (id == R.id.nav_fav) {
+//        } else if (id == R.id.nav_fav) {
 
         } else if (id == R.id.nav_calendar_saturday) {
             Intent intent = new Intent(this, MainActivity.class);
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "¿Tienes ya la app de la Drupalcamp 2016? Descargala en http://ccamposfuentes.es";
+            String shareBody = "¿Aún no tienes la app de la Drupalcamp 2016? https://goo.gl/ZX4YSi";
             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "DrupalCamp");
             sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
             startActivity(Intent.createChooser(sharingIntent, "Share via"));

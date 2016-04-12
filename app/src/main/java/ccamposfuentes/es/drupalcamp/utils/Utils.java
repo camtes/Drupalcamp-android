@@ -1,6 +1,7 @@
 package ccamposfuentes.es.drupalcamp.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.widget.ImageButton;
 
 import ccamposfuentes.es.drupalcamp.R;
+import ccamposfuentes.es.drupalcamp.Splash;
 
 /**
  * Author: Carlos Campos
@@ -66,4 +68,41 @@ public class Utils {
         }
 
     }
+
+    /**
+     * Read from shared preferences
+     * @param context Application context
+     * @param s Field searched
+     * @return Value for s in shared preferences
+     */
+    public static String readSharedPrefences(Context context, String s) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+        return sharedPreferences.getString(s, null);
+    }
+
+    public static Boolean getBooleanSharedPrefences(Context context, String s) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean(s, false);
+    }
+
+
+    public static void saveSharedPreferences(Context context, String s, String value) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(s, value);
+        editor.apply();
+    }
+
+    public static void saveBooleanSharedPreferences(Context context, String s, Boolean value) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(s, value);
+        editor.apply();
+    }
+
+
 }

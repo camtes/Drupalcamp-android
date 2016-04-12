@@ -30,7 +30,6 @@ import ccamposfuentes.es.drupalcamp.objects.Speaker;
 public class SpeakerAdapter extends RecyclerView.Adapter<SpeakerAdapter.SpeakerViewHolder> {
     List<Speaker> speakers = new ArrayList<>();
     Context context;
-    static final String URL_SERVER = "http://drupalcamp.es/";
 
     public SpeakerAdapter(List<Speaker> speakers, Context context) {
         this.speakers = speakers;

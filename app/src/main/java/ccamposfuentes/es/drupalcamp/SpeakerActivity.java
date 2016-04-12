@@ -53,8 +53,6 @@ public class SpeakerActivity extends AppCompatActivity {
         }
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.rv_speakers);
-        mRecyclerView.setHasFixedSize(true);
-
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);

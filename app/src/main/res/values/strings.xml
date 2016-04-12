@@ -21,6 +21,7 @@
     <string name="nav_sunday">Sunday</string>
     <string name="sumary">Sumary</string>
     <string name="rate_session">Rate this session</string>
+    <string name="lToken">token</string>
     <string name="token">Dhkc_C7RNrSQfJTmUrEYKXa1Ol2gT4aTpMeR2pXrF2w</string>
 
 </resources>
