@@ -14,12 +14,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.kml.KmlContainer;
-import com.google.maps.android.kml.KmlLayer;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
 
 public class InterestPoint extends FragmentActivity implements OnMapReadyCallback {
 
