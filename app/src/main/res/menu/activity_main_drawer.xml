@@ -11,6 +11,12 @@
             android:id="@+id/nav_speakers"
             android:icon="@drawable/ic_people_black_24dp"
             android:title="@string/speakers" />
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_map_black_24dp"
+            android:title="@string/interest_points"
+            />
         <!--<item-->
             <!--android:id="@+id/nav_fav"-->
             <!--android:icon="@drawable/ic_favorite_black_24dp"-->
@@ -32,6 +38,7 @@
 
     <item android:title="@string/comunications">
         <menu>
+
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"

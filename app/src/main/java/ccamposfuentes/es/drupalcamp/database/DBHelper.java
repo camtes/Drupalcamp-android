@@ -4,7 +4,10 @@ import java.sql.SQLException;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import com.j256.ormlite.android.AndroidConnectionSource;
+import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
@@ -48,6 +51,9 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         onCreate(db, connectionSource);
     }
 
+    public void onRemoveSession(SQLiteDatabase db) {
+    }
+
     public Dao<Speaker, Integer> getSpeakerDao() throws SQLException {
         if (usuarioDao == null) {
             usuarioDao = getDao(Speaker.class);
@@ -68,5 +74,20 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         usuarioDao = null;
         grupoDao = null;
     }
+
+    /**
+     * Remove all TouristSpots rows
+     */
+    public void clearSessions () {
+
+        try {
+            TableUtils.clearTable(connectionSource, Session.class);
+
+        } catch (SQLException e) {
+            Log.e("DBHelper", "Error while deleting TouristSpots");
+        }
+
+    }
+
 
 }

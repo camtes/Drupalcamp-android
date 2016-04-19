@@ -56,7 +56,6 @@ public class SpeakersSessionAdapter extends
         return svh;
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final SpeakerViewHolder holder, final int position) {
 

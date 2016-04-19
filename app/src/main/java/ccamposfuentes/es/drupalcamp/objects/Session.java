@@ -8,6 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -132,6 +133,9 @@ public class Session {
             case "session":
                 mType = 0;
                 break;
+            case "featured":
+                mType = 0;
+                break;
             default:
                 mType = 1;
         }
@@ -147,7 +151,7 @@ public class Session {
         String hour = null;
         Date newDate;
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        SimpleDateFormat formatHour = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat formatHour = new SimpleDateFormat("HH:mm");
 
         try {
             newDate = formatter.parse(date);
@@ -163,7 +167,7 @@ public class Session {
     public String getDay() {
         String hour = null;
         Date newDate;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         SimpleDateFormat formatHour = new SimpleDateFormat("HH:mm");
 
         try {
@@ -230,5 +234,20 @@ public class Session {
 
     public void setVotantes(String votantes) {
         this.votantes = votantes;
+    }
+
+    public Date getStartDate() {
+
+        Date startDate = null;
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        try {
+            startDate = formatter.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("Session", e.toString());
+        }
+        return startDate;
     }
 }

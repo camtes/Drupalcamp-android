@@ -2,6 +2,7 @@ package ccamposfuentes.es.drupalcamp;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,20 +12,31 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.Dao;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ccamposfuentes.es.apiclient.ApiClient;
+import ccamposfuentes.es.apiclient.ApiEndPointInterface;
+import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
+import ccamposfuentes.es.apiclient.restObject.RestValuation;
 import ccamposfuentes.es.drupalcamp.adapters.SpeakerAdapter;
 import ccamposfuentes.es.drupalcamp.adapters.SpeakersSessionAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
 import ccamposfuentes.es.drupalcamp.objects.Session;
 import ccamposfuentes.es.drupalcamp.objects.Speaker;
 import ccamposfuentes.es.drupalcamp.utils.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SessionDetail extends AppCompatActivity {
 
@@ -69,6 +81,7 @@ public class SessionDetail extends AppCompatActivity {
                 Utils.tintImageButton(getApplicationContext(), ibStart3, R.color.gray);
                 Utils.tintImageButton(getApplicationContext(), ibStart4, R.color.gray);
                 Utils.tintImageButton(getApplicationContext(), ibStart5, R.color.gray);
+                setValuation(1);
             }
         });
 
@@ -81,6 +94,7 @@ public class SessionDetail extends AppCompatActivity {
                 Utils.tintImageButton(getApplicationContext(), ibStart3, R.color.gray);
                 Utils.tintImageButton(getApplicationContext(), ibStart4, R.color.gray);
                 Utils.tintImageButton(getApplicationContext(), ibStart5, R.color.gray);
+                setValuation(2);
             }
         });
 
@@ -93,6 +107,7 @@ public class SessionDetail extends AppCompatActivity {
                 Utils.tintImageButton(getApplicationContext(), ibStart3, R.color.colorAccent);
                 Utils.tintImageButton(getApplicationContext(), ibStart4, R.color.gray);
                 Utils.tintImageButton(getApplicationContext(), ibStart5, R.color.gray);
+                setValuation(3);
             }
         });
 
@@ -105,6 +120,7 @@ public class SessionDetail extends AppCompatActivity {
                 Utils.tintImageButton(getApplicationContext(), ibStart3, R.color.colorAccent);
                 Utils.tintImageButton(getApplicationContext(), ibStart4, R.color.colorAccent);
                 Utils.tintImageButton(getApplicationContext(), ibStart5, R.color.gray);
+                setValuation(4);
             }
         });
 
@@ -116,6 +132,7 @@ public class SessionDetail extends AppCompatActivity {
                 Utils.tintImageButton(getApplicationContext(), ibStart3, R.color.colorAccent);
                 Utils.tintImageButton(getApplicationContext(), ibStart4, R.color.colorAccent);
                 Utils.tintImageButton(getApplicationContext(), ibStart5, R.color.colorAccent);
+                setValuation(5);
             }
         });
 
@@ -170,5 +187,50 @@ public class SessionDetail extends AppCompatActivity {
     public void setSession() {
         title.setText(session.getTitle());
         sumary.setText(Html.fromHtml(session.getText()));
+    }
+
+    /**
+     * Set rate session
+     * @param points point for session (1-5)
+     */
+    public void setValuation(int points) {
+        ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
+
+        String token = Utils.readSharedPrefences(this, getString(R.string.lToken));
+        RestValuation restValuation = new RestValuation(points, session.getId(), token);
+        JSONObject jsonObject = new JSONObject();
+        try {
+
+            jsonObject.put("name", Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                    Settings.Secure.ANDROID_ID));
+            jsonObject.put("field_pun", points);
+            jsonObject.put("field_session", Integer.valueOf(session.getId()));
+            jsonObject.put("field_votante", 70);
+
+//            "field_votante": 70 -> uid del que ha votado
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        final Call<Object> call = client.setValuation("Bearer "+ token, jsonObject);
+
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                Log.i("SessionDetail", response.raw().toString());
+                if (response.raw().code() == 200)
+                    Toast.makeText(SessionDetail.this, "Puntuación enviada correctamente", Toast.LENGTH_SHORT).show();
+                else if(response.raw().code() == 404)
+                    Toast.makeText(SessionDetail.this, "Not found", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(SessionDetail.this, "Otro tipo de error", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Log.e("SesionDetail", t.toString());
+            }
+        });
     }
 }

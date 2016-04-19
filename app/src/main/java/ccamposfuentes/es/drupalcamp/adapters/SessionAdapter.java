@@ -74,6 +74,9 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
             case 1:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_room_item_special, null);
                 break;
+            case 2:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_room_item, null);
+                break;
         }
 
         ViewHolder svh = new ViewHolder(v);
@@ -94,7 +97,8 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
                     try {
                         dao = mDBHelper.getSpeakerDao();
                         Speaker aux = dao.queryForId(Integer.valueOf(s));
-                        speakersSessions.add(aux.getUsername());
+                        if (aux != null)
+                            speakersSessions.add(aux.getUsername());
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -120,6 +124,7 @@ public class SessionAdapter extends RecyclerView.Adapter<SessionAdapter.ViewHold
                         context.startActivity(intent);
                     }
                 });
+
                 break;
             case 1:
                 holder.title.setText(itemsSessions.get(position).getTitle());

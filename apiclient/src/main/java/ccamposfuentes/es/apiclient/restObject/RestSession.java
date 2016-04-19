@@ -29,7 +29,7 @@ public class RestSession {
 //    @SerializedName("field_votos")
 //    List<RestVotos> votos;
 
-    @SerializedName("field_session_type_internal")
+    @SerializedName("field_session_type_internal_")
     List<RestValue> type;
 
     @SerializedName("field_room")

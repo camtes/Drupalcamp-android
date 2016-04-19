@@ -23,5 +23,11 @@
     <string name="rate_session">Rate this session</string>
     <string name="lToken">token</string>
     <string name="token">Dhkc_C7RNrSQfJTmUrEYKXa1Ol2gT4aTpMeR2pXrF2w</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="interest_points">Point of interest</string>
 
+    <string name="title_activity_interest_point">Points of Interest</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

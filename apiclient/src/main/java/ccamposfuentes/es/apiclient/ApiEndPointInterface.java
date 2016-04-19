@@ -8,13 +8,16 @@ import ccamposfuentes.es.apiclient.restObject.RestDeviceId;
 import ccamposfuentes.es.apiclient.restObject.RestRegister;
 import ccamposfuentes.es.apiclient.restObject.RestSession;
 import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
+import ccamposfuentes.es.apiclient.restObject.RestValuation;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Author: Carlos Campos
@@ -49,4 +52,12 @@ public interface ApiEndPointInterface {
     })
     @GET("speakers")
     Call<List<RestSpeaker>> getSpeakers(@Header("Authorization") String token);
+
+    // Rate session
+    // Get speakers
+    @Headers({
+            "Content-Type: application/json"
+    })
+    @POST("entity/vote_entity/?_format=json")
+    Call<Object> setValuation(@Header("Authorization") String token, @Body JSONObject restValuation);
 }

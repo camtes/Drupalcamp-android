@@ -6,4 +6,6 @@
 
     <color name="blueDrupal">#53B0EB</color>
     <color name="gray">#a6a6a6</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

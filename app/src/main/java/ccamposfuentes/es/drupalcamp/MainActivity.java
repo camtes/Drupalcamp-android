@@ -25,6 +25,7 @@ import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    String mDay = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        String mDay = null;
         if (getIntent().hasExtra("day"))
             mDay = getIntent().getExtras().getString("day");
 
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         assert tabLayout != null;
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     @Override
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
 
         //noinspection SimplifiableIfStatement
 
@@ -106,7 +109,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_speakers) {
             startActivity(new Intent(this, SpeakerActivity.class));
 //        } else if (id == R.id.nav_fav) {
-
+        } else if (id == R.id.nav_map) {
+            Intent intent = new Intent(this, InterestPoint.class);
+            startActivity(intent);
         } else if (id == R.id.nav_calendar_saturday) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("day", "Saturday");

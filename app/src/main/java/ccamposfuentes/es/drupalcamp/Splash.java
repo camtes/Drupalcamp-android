@@ -61,7 +61,11 @@ public class Splash extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        user_for_app(deviceId);
+
+        if (!Utils.getBooleanSharedPrefences(this, "first_use")) {
+            Utils.saveBooleanSharedPreferences(this, "first_use", true);
+            user_for_app(deviceId);
+        }
 
         finish();
         startActivity(new Intent(this, MainActivity.class));
@@ -136,6 +140,8 @@ public class Splash extends AppCompatActivity {
                 }
 
                 for (Session s : itemsSessions) {
+
+
 
                     Dao<Session, Integer> dao;
                     try {
@@ -246,8 +252,8 @@ public class Splash extends AppCompatActivity {
                 if (!sharedPreferences.getBoolean("database", false)) {
                     Utils.saveBooleanSharedPreferences(getApplicationContext(), "database", true);
 
-                    getSessions();
                     getSpeaker();
+                    getSessions();
                 }
             }
 
