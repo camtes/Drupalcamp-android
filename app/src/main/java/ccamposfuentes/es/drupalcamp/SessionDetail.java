@@ -28,12 +28,14 @@ import ccamposfuentes.es.apiclient.ApiClient;
 import ccamposfuentes.es.apiclient.ApiEndPointInterface;
 import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
 import ccamposfuentes.es.apiclient.restObject.RestValuation;
+import ccamposfuentes.es.apiclient.restObject.RestVote;
 import ccamposfuentes.es.drupalcamp.adapters.SpeakerAdapter;
 import ccamposfuentes.es.drupalcamp.adapters.SpeakersSessionAdapter;
 import ccamposfuentes.es.drupalcamp.database.DBHelper;
 import ccamposfuentes.es.drupalcamp.objects.Session;
 import ccamposfuentes.es.drupalcamp.objects.Speaker;
 import ccamposfuentes.es.drupalcamp.utils.Utils;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -197,39 +199,34 @@ public class SessionDetail extends AppCompatActivity {
         ApiEndPointInterface client = ApiClient.createService(ApiEndPointInterface.class);
 
         String token = Utils.readSharedPrefences(this, getString(R.string.lToken));
+        String authToken = "Bearer "+token;
         RestValuation restValuation = new RestValuation(points, session.getId(), token);
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject.put("name", Settings.Secure.getString(getApplicationContext().getContentResolver(),
-                    Settings.Secure.ANDROID_ID));
-            jsonObject.put("field_pun", points);
-            jsonObject.put("field_session", Integer.valueOf(session.getId()));
-            jsonObject.put("field_votante", 70);
-
-//            "field_votante": 70 -> uid del que ha votado
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
-        final Call<Object> call = client.setValuation("Bearer "+ token, jsonObject);
+        String name = Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        RestVote vote = new RestVote(name,
+                points, Integer.valueOf(session.getId()), Integer.valueOf(Utils.readSharedPrefences(this, getString(R.string.mUid))));
 
-        call.enqueue(new Callback<Object>() {
+
+        final Call<ResponseBody> call = client.setValuation(authToken, "json", vote);
+
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<Object> call, Response<Object> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.i("SessionDetail", response.raw().toString());
-                if (response.raw().code() == 200)
+
+                if (response.raw().code() == 201)
                     Toast.makeText(SessionDetail.this, "Puntuación enviada correctamente", Toast.LENGTH_SHORT).show();
                 else if(response.raw().code() == 404)
                     Toast.makeText(SessionDetail.this, "Not found", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(SessionDetail.this, "Otro tipo de error", Toast.LENGTH_SHORT).show();
+                else if (response.raw().code() == 500)
+                    Toast.makeText(SessionDetail.this, "Error 500", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<Object> call, Throwable t) {
-                Log.e("SesionDetail", t.toString());
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.e("err", t.toString());
             }
         });
     }

@@ -245,6 +245,7 @@ public class Splash extends AppCompatActivity {
             public void onResponse(Call<RestRegister> call, Response<RestRegister> response) {
                 RestRegister items = response.body();
                 Utils.saveSharedPreferences(getApplicationContext(), getString(R.string.lToken), items.getOauth_token());
+                Utils.saveSharedPreferences(getApplicationContext(), getString(R.string.mUid), items.getUid());
 
                 SharedPreferences sharedPreferences = getSharedPreferences("DrupalCamp",
                         Context.MODE_PRIVATE);

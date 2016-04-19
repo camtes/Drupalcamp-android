@@ -9,7 +9,10 @@ import ccamposfuentes.es.apiclient.restObject.RestRegister;
 import ccamposfuentes.es.apiclient.restObject.RestSession;
 import ccamposfuentes.es.apiclient.restObject.RestSpeaker;
 import ccamposfuentes.es.apiclient.restObject.RestValuation;
+import ccamposfuentes.es.apiclient.restObject.RestVote;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
@@ -18,6 +21,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Author: Carlos Campos
@@ -58,6 +62,11 @@ public interface ApiEndPointInterface {
     @Headers({
             "Content-Type: application/json"
     })
-    @POST("entity/vote_entity/?_format=json")
-    Call<Object> setValuation(@Header("Authorization") String token, @Body JSONObject restValuation);
+    @POST("entity/vote_entity/")
+    Call<ResponseBody> setValuation(
+            @Header("Authorization") String token,
+            @Query("_format") String format,
+            @Body RestVote restValuation);
+
+//
 }
