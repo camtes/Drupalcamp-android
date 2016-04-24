@@ -87,6 +87,13 @@ public class Utils {
         return sharedPreferences.getBoolean(s, false);
     }
 
+    public static int getIntSharedPrefences(Context context, String s) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+
+        return sharedPreferences.getInt(s, 0);
+    }
+
 
     public static void saveSharedPreferences(Context context, String s, String value) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
@@ -101,6 +108,14 @@ public class Utils {
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(s, value);
+        editor.apply();
+    }
+
+    public static void saveIntSharedPreferences(Context context, String s, int value) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("DrupalCamp",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(s, value);
         editor.apply();
     }
 

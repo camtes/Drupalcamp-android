@@ -61,6 +61,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ccamposfuentes.es.drupalcamp.MainActivity" />
         </activity>
+        <activity android:name=".SpeakerDetail"></activity>
     </application>
 
 </manifest>

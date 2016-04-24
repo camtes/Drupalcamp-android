@@ -66,7 +66,7 @@ public class Session {
     private String type;
 
     @DatabaseField(columnName = VOTOS)
-    private String votos;
+    private int voto;
 
     @DatabaseField(columnName = VOTANTES)
     private String votantes;
@@ -85,7 +85,7 @@ public class Session {
         this.room = Integer.valueOf(room);
         this.speakers = speakers;
         this.type = type;
-        this.votos = "";
+        this.voto = 0;
         this.votantes = "";
 
         if (date.contains("23"))
@@ -220,14 +220,6 @@ public class Session {
         this.speakers = speakers;
     }
 
-    public String getVotos() {
-        return votos;
-    }
-
-    public void setVotos(String votos) {
-        this.votos = votos;
-    }
-
     public String getVotantes() {
         return votantes;
     }
@@ -249,5 +241,17 @@ public class Session {
             Log.e("Session", e.toString());
         }
         return startDate;
+    }
+
+    public boolean isVoted() {
+        if (voto != 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void setVoto(int voto) {
+        this.voto = voto;
     }
 }

@@ -51,9 +51,6 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         onCreate(db, connectionSource);
     }
 
-    public void onRemoveSession(SQLiteDatabase db) {
-    }
-
     public Dao<Speaker, Integer> getSpeakerDao() throws SQLException {
         if (usuarioDao == null) {
             usuarioDao = getDao(Speaker.class);

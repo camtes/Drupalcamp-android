@@ -28,6 +28,7 @@ public class PageAdapter extends FragmentPagerAdapter {
         this.day = day;
     }
 
+
     @Override
     public int getCount() {
         return PAGE_COUNT;

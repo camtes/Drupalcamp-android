@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     String mDay = null;
+    int mPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,13 +53,19 @@ public class MainActivity extends AppCompatActivity
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        assert viewPager != null;
+        viewPager.setOffscreenPageLimit(0);
 
         if (getIntent().hasExtra("day"))
             mDay = getIntent().getExtras().getString("day");
 
+        if (getIntent().hasExtra("page"))
+            mPage = getIntent().getExtras().getInt("page")-1;
+
+        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),
+                MainActivity.this, mDay);
         assert viewPager != null;
-        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(),
-                MainActivity.this, mDay));
+        viewPager.setAdapter(pageAdapter);
 
         //TabLayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.appbartabs);
@@ -66,6 +73,8 @@ public class MainActivity extends AppCompatActivity
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.setCurrentItem(mPage);
+        pageAdapter.notifyDataSetChanged();
     }
 
     @Override

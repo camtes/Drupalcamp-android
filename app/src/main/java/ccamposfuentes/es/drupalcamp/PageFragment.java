@@ -1,15 +1,12 @@
 package ccamposfuentes.es.drupalcamp;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +18,6 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -52,9 +48,9 @@ public class PageFragment extends Fragment {
     private List<Session> itemsSessions;
     private String day;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyclerView;
     private SessionAdapter mAdapter;
     private DBHelper mDBHelper;
+    private RecyclerView mRecyclerView;
 
     public static PageFragment newInstance(int page, String day) {
         Bundle args = new Bundle();
@@ -83,18 +79,19 @@ public class PageFragment extends Fragment {
             mDBHelper = OpenHelperManager.getHelper(getContext(), DBHelper.class);
 
         mDBHelper.clearSessions();
+        mAdapter.notifyDataSetChanged();
 
         getSessions();
     }
 
     void onItemsLoadComplete() {
         // Update the adapter and notify data set changed
-        // ...
-        loadSessions();
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.putExtra("page", mPage);
+        startActivity(intent);
+        getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        // Stop refresh animation
-        mAdapter.notifyDataSetChanged();
-        mSwipeRefreshLayout.setRefreshing(false);
+        getActivity().finish();
     }
 
 
@@ -107,7 +104,6 @@ public class PageFragment extends Fragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Refresh items
                 refreshItems();
             }
         });
@@ -120,10 +116,6 @@ public class PageFragment extends Fragment {
 
         loadSessions();
 
-        // Adaptador
-        mAdapter = new SessionAdapter(getContext(), itemsSessions);
-        mRecyclerView.setAdapter(mAdapter);
-
         return view;
     }
 
@@ -135,7 +127,7 @@ public class PageFragment extends Fragment {
     }
 
     public void loadSessions() {
-// Connect to database
+        // Connect to database
         mDBHelper = OpenHelperManager.getHelper(getContext(), DBHelper.class);
 
         Dao dao;
@@ -148,19 +140,16 @@ public class PageFragment extends Fragment {
 
                 QueryBuilder<Session, Integer> queryBuilder = dao.queryBuilder();
                 queryBuilder.where().eq(Session.ROOM, mPage).and().eq(Session.DAY, day);
-
                 PreparedQuery<Session> preparedQuery = queryBuilder.prepare();
-
                 sessions = dao.query(preparedQuery);
-                Collections.sort(sessions, new CustomComparator());
-
             }
             else {
                 sessions = dao.queryForEq(Session.ROOM, mPage);
-                Collections.sort(sessions, new CustomComparator());
             }
 
+            Collections.sort(sessions, new CustomComparator());
             itemsSessions = sessions;
+
         } catch (SQLException e) {
             Log.e("PageFragment", e.toString());
         }
@@ -169,8 +158,11 @@ public class PageFragment extends Fragment {
             OpenHelperManager.releaseHelper();
             mDBHelper = null;
         }
-    }
 
+        // Adaptador
+        mAdapter = new SessionAdapter(getContext(), itemsSessions);
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
     /**
      * ApiClient
@@ -195,7 +187,7 @@ public class PageFragment extends Fragment {
                     String difficulty = null;
                     String language = null;
                     String date = null;
-                    String room = "2";
+                    String room = "0";
                     String type = "session";
                     String[] speakers = new String[item.getSpeakers().size()];
 
@@ -243,7 +235,8 @@ public class PageFragment extends Fragment {
                     try {
                         dao = mDBHelper.getSessionDao();
                         dao.create(s);
-                    } catch (SQLException e) {
+                    }
+                    catch (SQLException ignored) {
                     }
                 }
 
@@ -252,8 +245,6 @@ public class PageFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<RestSession>> call, Throwable t) {
-
-                // TODO manage get tourist spots fail
                 Log.e("INTRO", "Fail sessions load");
             }
 
