@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "ccamposfuentes.es.drupalcamp"
         minSdkVersion 16
-        targetSdkVersion 23
-        versionCode 5
-        versionName "1.1"
+        targetSdkVersion 24
+        versionCode 6
+        versionName "1.2"
 
         // Enabling multidex support.
         multiDexEnabled true
@@ -30,18 +30,19 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':apiclient')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'com.android.support:design:24.1.1'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:cardview-v7:24.1.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.j256.ormlite:ormlite-core:4.48'
     compile 'com.j256.ormlite:ormlite-android:4.48'
-    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:support-v4:24.1.1'
     compile 'com.onesignal:OneSignal:2.+@aar'
-    compile 'com.google.android.gms:play-services-gcm:+'
+    compile 'com.google.android.gms:play-services:9.4.0'
+    /*compile 'com.google.android.gms:play-services-gcm:+'
     compile 'com.google.android.gms:play-services-analytics:+'
     compile 'com.google.android.gms:play-services-location:+'
     compile 'com.google.android.gms:play-services:8.4.0'
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.0'*/
 }

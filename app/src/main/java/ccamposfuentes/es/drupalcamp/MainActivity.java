@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity
 
         viewPager.setCurrentItem(mPage);
         pageAdapter.notifyDataSetChanged();
+
     }
 
     @Override
