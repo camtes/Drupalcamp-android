@@ -17,8 +17,8 @@ import ccamposfuentes.es.drupalcamp.PageFragment;
  */
 
 public class PageAdapter extends FragmentPagerAdapter {
-    final int PAGE_COUNT = 4;
-    private String tabTitles[] = new String[] { "Faraday", "Cine 3", "Einstein", "Gutenberg" };
+    final int PAGE_COUNT = 3;
+    private String tabTitles[] = new String[] {" VIE 5", "SAB 6", "DOM 7" };
     private Context context;
     private String day;
 
@@ -45,9 +45,6 @@ public class PageAdapter extends FragmentPagerAdapter {
 
                 break;
             case 2:
-
-                break;
-            case 3:
 
                 break;
         }

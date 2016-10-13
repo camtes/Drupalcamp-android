@@ -16,10 +16,10 @@
     <string name="close_session">Sesión de cierre</string>
     <string name="lunch">Almuerzo</string>
     <string name="share">Compartir</string>
-    <string name="calendar">Calendario</string>
+    <string name="calendar">Examples</string>
     <string name="nav_friday">Viernes</string>
-    <string name="nav_saturday">Sabado</string>
-    <string name="nav_sunday">Domingo</string>
+    <string name="nav_saturday">Profile example</string>
+    <string name="nav_sunday">Session example</string>
     <string name="sumary">Resumen</string>
     <string name="rate_session">Valorar sesión</string>
     <string name="lToken">token</string>

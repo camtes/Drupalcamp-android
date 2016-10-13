@@ -59,13 +59,13 @@ public class SessionDetail extends AppCompatActivity {
 
         title = (TextView) findViewById(R.id.tv_session_detail_title);
         sumary = (TextView) findViewById(R.id.tv_session_detail_sumary);
-        ibStart1 = (ImageButton) findViewById(R.id.ib_start_1);
-        ibStart2 = (ImageButton) findViewById(R.id.ib_start_2);
-        ibStart3 = (ImageButton) findViewById(R.id.ib_start_3);
-        ibStart4 = (ImageButton) findViewById(R.id.ib_start_4);
-        ibStart5 = (ImageButton) findViewById(R.id.ib_start_5);
-        progressBar = (ProgressBar) findViewById(R.id.session_detail_progressbar);
-        loadLayout = (RelativeLayout) findViewById(R.id.session_detail_loadpanel);
+//        ibStart1 = (ImageButton) findViewById(R.id.ib_start_1);
+//        ibStart2 = (ImageButton) findViewById(R.id.ib_start_2);
+//        ibStart3 = (ImageButton) findViewById(R.id.ib_start_3);
+//        ibStart4 = (ImageButton) findViewById(R.id.ib_start_4);
+//        ibStart5 = (ImageButton) findViewById(R.id.ib_start_5);
+//        progressBar = (ProgressBar) findViewById(R.id.session_detail_progressbar);
+//        loadLayout = (RelativeLayout) findViewById(R.id.session_detail_loadpanel);
 
         rvSpeakers = (RecyclerView) findViewById(R.id.rv_sessions_detail_speakers);
         assert rvSpeakers != null;
@@ -78,6 +78,19 @@ public class SessionDetail extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             loadSession(bundle.getString("idSession"));
+        }
+        else {
+            speakersItems.add(new Speaker("0","ccamposfuentes","Carlos Campos", "SI2 Soluciones", "https://pbs.twimg.com/profile_images/725024395425669120/v98f7FGK.jpg"));
+            SpeakersSessionAdapter mAdapter = new SpeakersSessionAdapter(speakersItems, getApplicationContext());
+            rvSpeakers.setAdapter(mAdapter);
+
+            title.setText("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur");
+            sumary.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies augue sit amet turpis tristique, nec fringilla tellus posuere. Nam vitae metus pellentesque, mollis ipsum ac, pretium mauris. Integer ac dignissim ante, ac tincidunt augue. Suspendisse eu fringilla ipsum, at egestas mauris. Maecenas aliquet et dui ac dapibus. Nullam aliquet nisi quis nisl vehicula, molestie luctus ligula consequat. Duis fringilla est ex, non mattis erat venenatis sit amet. Nullam a tortor a erat faucibus mattis ut non nisl.\n" +
+                    "\n" +
+                    "Fusce a dui at elit auctor elementum id a elit. Aliquam aliquam ligula commodo commodo tincidunt. Curabitur a arcu at felis scelerisque consectetur at at metus. In ut neque orci. Praesent at libero est. Proin blandit sapien sit amet orci semper feugiat. Etiam quis feugiat augue. Duis non felis a libero sollicitudin fringilla. In ut pharetra mi, a facilisis lacus. Cras imperdiet sem sed vestibulum interdum. Aenean feugiat metus eget ex euismod imperdiet. Ut dapibus orci sit amet cursus laoreet. Ut justo diam, congue ut feugiat sed, pellentesque vel arcu.\n" +
+                    "\n" +
+                    "In venenatis massa eros, ac auctor dolor varius ut. Sed porta pretium dui, vel facilisis nunc ultricies ullamcorper. Praesent eu dolor nibh. Curabitur sit amet enim urna. Etiam fermentum malesuada nisl, non semper magna rhoncus iaculis. Vestibulum et volutpat odio. Etiam lobortis venenatis libero a efficitur. Nulla aliquam a leo eget facilisis. Sed non metus sed leo maximus facilisis ac vel magna. Mauris id odio eros. Nunc nec risus suscipit, pellentesque dolor nec, hendrerit nulla. Maecenas luctus ipsum vitae euismod commodo. Duis hendrerit risus arcu, ullamcorper tempus eros vulputate non. Sed aliquet elit sit amet euismod aliquam.\n" +
+                    "\n");
         }
     }
 

@@ -7,65 +7,100 @@
     android:orientation="vertical"
     tools:context="ccamposfuentes.es.drupalcamp.SpeakerDetail">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="16dp">
-
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_image"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:text="Carlos Campos"/>
-
-        <TextView
-            android:id="@+id/profile_company"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_name"
-            android:textColor="@color/gray"
-            android:gravity="center"
-            android:text="SI2 Soluciones"/>
-
-        <TextView
-            android:id="@+id/profile_bio_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:text="Bio"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:textSize="16sp"
-            android:textColor="@android:color/white"
-            android:layout_below="@id/profile_company"
-            />
-
-    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/profile_bio_label"
         android:background="@android:color/white">
 
-        <TextView
-            android:id="@+id/profile_bio"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16sp"
+            android:orientation="vertical"
+            >
 
-            />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                >
+
+                <ImageButton
+                    android:id="@+id/profile_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/places_ic_clear"
+                    android:layout_alignParentEnd="true"
+                    android:padding="16dp"
+                    android:layout_alignParentRight="true" />
+
+
+                <ImageView
+                    android:id="@+id/profile_image_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/user"
+                    android:alpha="0.07"/>
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="40dp"
+                    android:paddingTop="32dp"
+                    android:src="@drawable/user"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_image"
+                    android:gravity="center_horizontal"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/cardview_dark_background"
+                    android:text="Carlos Campos"/>
+
+                <TextView
+                    android:id="@+id/profile_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_name"
+                    android:textColor="@color/gray"
+                    android:gravity="center"
+                    android:text="SI2 Soluciones"/>
+
+                <TextView
+                    android:id="@+id/profile_bio_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="Bio"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/cardview_dark_background"
+                    android:layout_below="@id/profile_company"
+                    />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et nunc et lorem tempus vestibulum sed ut eros. Quisque at orci orci. Nulla facilisi. Aliquam erat volutpat. Quisque pretium odio eget diam fermentum, sit amet hendrerit tellus viverra. Sed nisl dui, hendrerit in dui eget, lacinia mollis nisi. Donec aliquet sagittis nibh, interdum luctus arcu condimentum sed. Donec mauris ipsum, dictum eget blandit et, imperdiet et nulla. Aliquam vitae efficitur justo, eu convallis risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis blandit tellus quis consequat dictum. Pellentesque condimentum maximus risus, nec feugiat neque tincidunt sed.
+
+Sed dolor nunc, lacinia vitae dapibus ut, tempus ac nisl. Pellentesque finibus elit vel lacus luctus pretium. Pellentesque efficitur lacus vel nibh porttitor faucibus. Ut massa nisi, sagittis sit amet facilisis id, gravida vel neque. Maecenas molestie nulla justo, non tempus orci vulputate id. Quisque iaculis, enim at accumsan malesuada, mi nisl viverra eros, sit amet tristique enim risus sed leo. Sed at laoreet magna. Etiam quis libero mattis orci vehicula mattis.
+
+"
+                android:padding="16dp"/>
+
+        </LinearLayout>
 
     </ScrollView>
 

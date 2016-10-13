@@ -15,10 +15,10 @@
     <string name="close_session">Close session</string>
     <string name="lunch">Lunch</string>
     <string name="share">Share</string>
-    <string name="calendar">Schedule</string>
+    <string name="calendar">Examples</string>
     <string name="nav_friday">Friday</string>
-    <string name="nav_saturday">Saturday</string>
-    <string name="nav_sunday">Sunday</string>
+    <string name="nav_saturday">Profile example</string>
+    <string name="nav_sunday">Session example</string>
     <string name="sumary">Sumary</string>
     <string name="rate_session">Rate this session</string>
     <string name="lToken">token</string>

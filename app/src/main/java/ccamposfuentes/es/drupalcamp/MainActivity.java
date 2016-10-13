@@ -2,7 +2,6 @@ package ccamposfuentes.es.drupalcamp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
@@ -15,10 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.onesignal.OneSignal;
-
-import java.util.List;
 
 import ccamposfuentes.es.drupalcamp.adapters.PageAdapter;
 
@@ -123,17 +119,19 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, InterestPoint.class);
             startActivity(intent);
         } else if (id == R.id.nav_calendar_saturday) {
-            Intent intent = new Intent(this, MainActivity.class);
+            /*Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("day", "Saturday");
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            finish();*/
+            startActivity(new Intent(this, SpeakerDetail.class));
         } else if (id == R.id.nav_calendar_sunday) {
-            Intent intent = new Intent(this, MainActivity.class);
+            /*Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("day", "Sunday");
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            finish();*/
+            startActivity(new Intent(this, SessionDetail.class));
         } else if (id == R.id.nav_share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
